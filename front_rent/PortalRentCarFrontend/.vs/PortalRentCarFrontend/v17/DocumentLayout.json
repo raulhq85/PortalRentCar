@@ -1,0 +1,121 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FD37414C-8AAA-47BA-8248-1AE5D2C2976E}|PortalRentCar.Client\\PortalRentCar.Client.csproj|e:\\netcore8\\front\\portalrentcarfrontend\\portalrentcar.client\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FD37414C-8AAA-47BA-8248-1AE5D2C2976E}|PortalRentCar.Client\\PortalRentCar.Client.csproj|solutionrelative:portalrentcar.client\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD37414C-8AAA-47BA-8248-1AE5D2C2976E}|PortalRentCar.Client\\PortalRentCar.Client.csproj|e:\\netcore8\\front\\portalrentcarfrontend\\portalrentcar.client\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{FD37414C-8AAA-47BA-8248-1AE5D2C2976E}|PortalRentCar.Client\\PortalRentCar.Client.csproj|solutionrelative:portalrentcar.client\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD37414C-8AAA-47BA-8248-1AE5D2C2976E}|PortalRentCar.Client\\PortalRentCar.Client.csproj|e:\\netcore8\\front\\portalrentcarfrontend\\portalrentcar.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD37414C-8AAA-47BA-8248-1AE5D2C2976E}|PortalRentCar.Client\\PortalRentCar.Client.csproj|solutionrelative:portalrentcar.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD37414C-8AAA-47BA-8248-1AE5D2C2976E}|PortalRentCar.Client\\PortalRentCar.Client.csproj|e:\\netcore8\\front\\portalrentcarfrontend\\portalrentcar.client\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FD37414C-8AAA-47BA-8248-1AE5D2C2976E}|PortalRentCar.Client\\PortalRentCar.Client.csproj|solutionrelative:portalrentcar.client\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD37414C-8AAA-47BA-8248-1AE5D2C2976E}|PortalRentCar.Client\\PortalRentCar.Client.csproj|e:\\netcore8\\front\\portalrentcarfrontend\\portalrentcar.client\\auth\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD37414C-8AAA-47BA-8248-1AE5D2C2976E}|PortalRentCar.Client\\PortalRentCar.Client.csproj|solutionrelative:portalrentcar.client\\auth\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 75,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:12:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:13:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:14:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:15:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:16:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "app.css",
+              "DocumentMoniker": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\css\\app.css",
+              "RelativeDocumentMoniker": "PortalRentCar.Client\\wwwroot\\css\\app.css",
+              "ToolTip": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\css\\app.css",
+              "RelativeToolTip": "PortalRentCar.Client\\wwwroot\\css\\app.css",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAiwEkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-08-06T20:24:42.37Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\_Imports.razor",
+              "RelativeDocumentMoniker": "PortalRentCar.Client\\_Imports.razor",
+              "ToolTip": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\_Imports.razor",
+              "RelativeToolTip": "PortalRentCar.Client\\_Imports.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-06T20:04:33.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\Auth\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "PortalRentCar.Client\\Auth\\AuthenticationService.cs",
+              "ToolTip": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\Auth\\AuthenticationService.cs",
+              "RelativeToolTip": "PortalRentCar.Client\\Auth\\AuthenticationService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T20:02:12.483Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\Program.cs",
+              "RelativeDocumentMoniker": "PortalRentCar.Client\\Program.cs",
+              "ToolTip": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\Program.cs",
+              "RelativeToolTip": "PortalRentCar.Client\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-06T20:00:15.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "index.html",
+              "DocumentMoniker": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "PortalRentCar.Client\\wwwroot\\index.html",
+              "ToolTip": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\index.html",
+              "RelativeToolTip": "PortalRentCar.Client\\wwwroot\\index.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABTAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-08-06T19:53:10.24Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\obj\\Debug\\net8.0\\compressed\\38bck7tw70.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\obj\\Debug\\net8.0\\scopedcss\\bundle\\PortalRentCar.Client.styles.css",
+      "PackagePath": "staticwebassets\\PortalRentCar.Client.styles.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\assets\\images\\favicon.png",
+      "PackagePath": "staticwebassets\\assets\\images\\favicon.png"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\assets\\images\\fondo-empresa.png",
+      "PackagePath": "staticwebassets\\assets\\images\\fondo-empresa.png"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\assets\\images\\historial.png",
+      "PackagePath": "staticwebassets\\assets\\images\\historial.png"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\assets\\images\\sinimagen.jpeg",
+      "PackagePath": "staticwebassets\\assets\\images\\sinimagen.jpeg"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\assets\\images\\vacaciones.png",
+      "PackagePath": "staticwebassets\\assets\\images\\vacaciones.png"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\assets\\images\\venta.png",
+      "PackagePath": "staticwebassets\\assets\\images\\venta.png"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\assets\\images\\ventaproductos.png",
+      "PackagePath": "staticwebassets\\assets\\images\\ventaproductos.png"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\js\\app.js",
+      "PackagePath": "staticwebassets\\js\\app.js"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\js\\bootstrap.js"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "E:\\NETCORE8\\FRONT\\PortalRentCarFrontend\\PortalRentCar.Client\\wwwroot\\lib\\bootstrap\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PortalRentCar.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.PortalRentCar.Client.props",
+      "PackagePath": "build\\PortalRentCar.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.PortalRentCar.Client.props",
+      "PackagePath": "buildMultiTargeting\\PortalRentCar.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.PortalRentCar.Client.props",
+      "PackagePath": "buildTransitive\\PortalRentCar.Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
