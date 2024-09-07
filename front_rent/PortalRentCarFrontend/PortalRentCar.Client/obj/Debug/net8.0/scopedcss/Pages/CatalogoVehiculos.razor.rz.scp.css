@@ -1,0 +1,22 @@
+.card-container[b-9x6abvnxcv] {
+    flex: 1 0 21%; /* Ajusta el tamaño de las tarjetas */
+    margin: 10px;
+    max-width: 280px; /* Limita el ancho de la tarjeta */
+}
+
+.card-img-container[b-9x6abvnxcv] {
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img-top[b-9x6abvnxcv] {
+    width: 100%;
+    height: auto;
+}
+
+.card-body[b-9x6abvnxcv] {
+    padding: 15px;
+}

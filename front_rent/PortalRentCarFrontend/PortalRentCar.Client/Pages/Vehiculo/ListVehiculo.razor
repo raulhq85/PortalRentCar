@@ -1,0 +1,223 @@
+﻿@page "/vehiculo/list"
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+@inject IVehiculoProxy Proxy
+@inject ITipoVehiculoProxy TipoVehiculoProxy
+@inject IMarcaProxy MarcaProxy
+@inject NavigationManager Nav
+@inject IToastService Toaster
+@inject SweetAlertService Swal
+@inject IJSRuntime JsRuntime
+@inject HttpClient HttpClient
+@inject IWebAssemblyHostEnvironment WebAssemblyHost
+
+<ListaGenerica TItem="VehiculoDtoResponse" Lista="Vehiculos" Titulo="Lista de Vehiculos">
+    <Filtros>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="producto" class="form-label">Nombre:</label>
+                    <InputText type="text" class="form-control" id="producto" @bind-Value="BusquedaRequest.Nombre" />
+                </div>
+            </div>
+            <div class="col-3">
+            <label for="tipovehiculo" class="form-label">Tipo Vehiculo:</label>
+                <InputSelect id="tipovehiculo" class="form-select" @bind-Value="BusquedaRequest.TipoVehiculoId">
+            <option value="">Todos</option>
+            @foreach (var item in TipoVehiculo)
+            {
+            <option value="@item.Id">@item.Nombre</option>
+            }
+            </InputSelect>
+            </div>
+            <div class="col-3">
+                <label for="marca" class="form-label">Marca:</label>
+                <InputSelect id="marca" class="form-select" @bind-Value="BusquedaRequest.MarcaId">
+                    <option value="">Todos</option>
+                    @foreach (var item in Marca)
+                    {
+                        <option value="@item.Id">@item.Nombre</option>
+                    }
+                </InputSelect>
+            </div>
+        </div>
+        <div class="row mt-3 justify-content-end">
+            <div class="col-auto">
+                <button class="btn btn-outline-primary" @onclick="OnSearch">
+                    <i class="bi bi-search me-1"></i>Buscar
+                </button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-outline-primary" @onclick="OnLimpiar">
+                    <i class="bi bi-eraser-fill me-1"></i>Limpiar
+                </button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-primary" @onclick="OnNuevo"><i class="bi bi-plus-circle me-1"></i>Nuevo</button>
+            </div>
+        </div>
+    </Filtros>
+    <Cabeceras>
+        <th>#</th>
+        <th>Vehiculo</th>
+        <th>Placa</th>
+        <th>TipoVehiculo</th>
+        <th>Marca</th>
+        <th>Año</th>
+        <th>Color</th>
+        <th>Precio Dia</th>
+        <th>Estrellas</th>
+        <th>Situacion Vehiculo</th>
+        <th>Acciones</th>
+    </Cabeceras>
+    <Detalles>
+        <td>@context.Id</td>
+        <td>@context.Nombre</td>
+        <td>@context.Placa</td>
+        <td>@context.TipoVehiculo</td>
+        <td>@context.Marca</td>
+        <td>@context.Anio</td>
+        <td>@context.Color</td>
+        <td>@context.Precio</td>
+        <td>@context.Kilometraje</td>
+        <td>@context.SituacionVehiculo</td>
+        <td>
+             <button type="button" class="btn" @onclick="() => OnEditar(context.Id)">
+                <i class="bi bi-pencil-square" style="color:green;"></i>
+            </button>
+            <button type="button" class="btn" @onclick="() => OnEliminar(context.Id)">
+                <i class="bi bi-trash3-fill" style="color:orangered;"></i>
+            </button>
+        </td>
+    </Detalles>
+</ListaGenerica>
+
+<DataPager @ref="Paginador" Result="PagedResult" OnPageChanged="PaginaCambiada" OnPageSizeChanged="FilasPorPagina"></DataPager>
+
+<LoadingComponent IsLoading="IsLoading" />
+
+@code {
+
+    public VehiculoSearchRequest BusquedaRequest { get; set; } = new()
+        {
+            Anio = null,
+            Color = null,
+            MarcaId = null,
+            Nombre = null,
+            PrecioMaximo = null,
+            PrecioMinimo = null,
+            SituacionVehiculo = 3, // id 3 es todos los estados
+            TipoVehiculoId = null,
+            Pagina = 1,
+            Filas = 5
+        };
+    public ICollection<VehiculoDtoResponse>? Vehiculos { get; set; }
+
+    public bool IsLoading { get; set; }
+
+    public DataPager Paginador { get; set; } = default!;
+
+    public PagedResult<VehiculoDtoResponse> PagedResult { get; set; } = default!;
+
+    public ICollection<TipoVehiculoDtoResponse> TipoVehiculo { get; set; } = new List<TipoVehiculoDtoResponse>();
+    public ICollection<MarcaDtoResponse> Marca { get; set; } = new List<MarcaDtoResponse>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        TipoVehiculo = await TipoVehiculoProxy.ListAsync();
+        Marca = await MarcaProxy.ListAsync();
+ 
+        PagedResult = new PagedResult<VehiculoDtoResponse>()
+            {
+                CurrentPage = BusquedaRequest.Pagina,
+                RowPerPage = BusquedaRequest.Filas
+            };
+
+        await OnSearch();
+    }
+
+    private async Task OnSearch()
+    {
+        try
+
+        {
+            IsLoading = true;
+
+            var response = await Proxy.ListAsync(BusquedaRequest);
+
+            Vehiculos = response.Data;
+            if (Vehiculos is not null)
+            {
+                PagedResult.Results = Vehiculos;
+                PagedResult.RowCount = Vehiculos.Count;
+                PagedResult.TotalPages = response.TotalPages;
+            }
+        }
+        catch (Exception ex)
+        {
+            Toaster.ShowError(ex.Message);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private void OnLimpiar()
+    {
+        BusquedaRequest = new() { Pagina = 1, Filas = 5 };
+    }
+
+    private void OnNuevo()
+    {
+        Nav.NavigateTo("/vehiculo/nuevo");
+    }
+
+    private void OnEditar(int id)
+    {
+        Nav.NavigateTo($"/vehiculo/editar/{id}");
+    }
+
+    private async Task OnEliminar(int id)
+    {
+        try
+        {
+            var result = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Text = "Desea eliminar el vehiculo?",
+                    Title = "Eliminar",
+                    Icon = SweetAlertIcon.Question,
+                    ShowCancelButton = true
+                });
+
+            if (result.IsConfirmed)
+            {
+                await Proxy.DeleteAsync(id);
+                Toaster.ShowInfo("Se elimino correctamente el vehiculo");
+                await OnSearch();
+            }
+        }
+        catch (Exception ex)
+        {
+            Toaster.ShowError(ex.Message);
+        }
+    }
+
+    private async Task PaginaCambiada()
+    {
+        IsLoading = true;
+        BusquedaRequest.Pagina = PagedResult.CurrentPage;
+        BusquedaRequest.Filas = PagedResult.RowPerPage;
+        await OnSearch();
+    }
+
+    private async Task FilasPorPagina()
+    {
+        BusquedaRequest.Pagina = PagedResult.CurrentPage;
+        BusquedaRequest.Filas = PagedResult.RowPerPage;
+        await OnSearch();
+    }
+
+
+
+
+}

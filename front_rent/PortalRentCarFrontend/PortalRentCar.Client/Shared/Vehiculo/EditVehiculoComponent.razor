@@ -1,0 +1,150 @@
+﻿@inject SweetAlertService Swal
+
+<h2 class="text-uppercase mt-2 mb-5">@Titulo</h2>
+
+<EditForm Model="Request" OnValidSubmit="OnGrabar">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="row justify-content-end m-0 mb-3">
+        <div class="col-auto">
+            <NavLink class="btn btn-outline-primary" href="vehiculo/list">
+                <i class="bi bi-x-circle me-1"></i>Cancelar
+            </NavLink>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-floppy me-1"></i>Guardar
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Nombre -->
+        <div class="col-md-6 mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <InputText class="form-control" @bind-Value="Request.Nombre" id="nombre" />
+        </div>
+        <!-- Placa -->
+        <div class="col-md-3 mb-3">
+            <label for="placa" class="form-label">PLaca</label>
+            <InputText class="form-control" @bind-Value="Request.Placa" id="placa" />
+        </div>
+        <!-- Tipo Vehiculo -->
+        <div class="col-md-6 mb-3">
+            <label for="tipoVehiculo" class="form-label">Tipo Vehiculo</label>
+            <InputSelect id="tipoVehiculo" class="form-select" @bind-Value="Request.TipoVehiculoId">
+                <option value="">--Seleccione--</option>
+                @foreach (var item in TipoVehiculo)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </InputSelect>
+        </div>
+        <!-- Marca -->
+        <div class="col-md-3 mb-3">
+            <label for="marca" class="form-label">Marca</label>
+            <InputSelect id="marca" class="form-select" @bind-Value="Request.MarcaId">
+                <option value="">--Seleccione--</option>
+                @foreach (var item in Marca)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </InputSelect>
+        </div>
+    </div>
+
+     <div class="row">
+        <!-- Color -->
+        <div class="col-md-3 mb-3">
+            <label for="color" class="form-label">Color</label>
+            <InputText class="form-control" @bind-Value="Request.Color" id="color" />
+        </div>
+        <!-- anio -->
+        <div class="col-md-3 mb-3">
+            <label for="anio" class="form-label">Año</label>
+            <InputNumber class="form-control" @bind-Value="Request.Anio" id="anio" step="1" />
+        </div>
+        <!-- kilometraje -->
+        <div class="col-md-3 mb-3">
+            <label for="Kilometraje" class="form-label">Kilometraje</label>
+            <InputNumber class="form-control" @bind-Value="Request.Kilometraje" id="Kilometraje" step="1" />
+        </div>
+        <!-- Situacion -->
+        <div class="col-md-3 mb-3" hidden>
+            <label for="situacionVehiculo" class="form-label">Estado Vehiculo</label>
+            <InputNumber class="form-control" @bind-Value="Request.SituacionVehiculo" id="situacionVehiculo" />
+        </div>
+    </div> 
+
+     <div class="row">
+        <!-- Url Imagen -->
+        <div class="col-md-6 mb-3">
+            <label for="base64imagen" class="form-label">Imagen</label>
+            <InputFile id="base64imagen" class="form-control" accept="image/png, image/jpeg, image/webp" OnChange="OnImagenChanged" />
+        </div>
+        <!-- precio dia -->
+        <div class="col-md-3 mb-3">
+            <label for="precio" class="form-label">Precio Dia</label>
+            <InputNumber class="form-control" @bind-Value="Request.Precio" id="precio" step="0.01" />
+        </div>
+    </div> 
+
+     <div class="row">
+        <!-- Previsualización de Imagen -->
+        <div class="col-md-6 mb-3">
+            @if (!string.IsNullOrEmpty(Request.ImagenUrL))
+            {
+                <div class="card" style="width: 18rem;">
+                    <img src="@Request.ImagenUrL" class="card-img-top" alt="Imagen del Vehiculo" style="max-width: 100%; height: auto;" />
+                </div>
+            }
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    [EditorRequired][Parameter] public string Titulo { get; set; } = default!;
+    [EditorRequired][Parameter] public ICollection<TipoVehiculoDtoResponse> TipoVehiculo { get; set; } = new List<TipoVehiculoDtoResponse>();
+    [EditorRequired][Parameter] public ICollection<MarcaDtoResponse> Marca { get; set; } = new List<MarcaDtoResponse>();
+    [EditorRequired][Parameter] public EventCallback<VehiculoDtoRequest> OnGuardar { get; set; }
+    [Parameter] public VehiculoDtoRequest Request { get; set; } = new();
+    private VehiculoDtoResponse? Seleccionado { get; set; }
+    private string NombreVehiculo { get; set; } = string.Empty;
+    private const long MaxFileSize = 15 * 1024 * 1024;
+
+    private async Task OnGrabar()
+    {
+        if (Seleccionado is not null)
+            Request.Id = Seleccionado.Id;
+
+        await OnGuardar.InvokeAsync(Request);
+    }
+
+    private void VehiculoSeleccionado(VehiculoDtoResponse item)
+    {
+        NombreVehiculo = item.Nombre;
+        Request.Id = item.Id;
+        Seleccionado = item;
+    }
+
+    private async Task OnImagenChanged(InputFileChangeEventArgs obj)
+    {
+        try
+        {
+            var imagen = obj.File;
+            var buffer = new byte[imagen.Size];
+            _ = await imagen.OpenReadStream(MaxFileSize).ReadAsync(buffer);
+
+            Request.Base64Imagen = Convert.ToBase64String(buffer);
+            Request.ArchivoImagen = imagen.Name;
+            Request.ImagenUrL = null;
+
+        }
+        catch (Exception ex)
+        {
+            await Swal.FireAsync("Error de Archivo", ex.Message);
+        }
+    }
+
+}

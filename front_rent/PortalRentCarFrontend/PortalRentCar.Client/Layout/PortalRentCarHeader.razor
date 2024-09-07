@@ -1,0 +1,60 @@
+﻿@inject SweetAlertService Swal
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 shadow-sm">
+        <div class="container-fluid">
+            <NavLink class="navbar-brand text-warning fw-bold" href="/">
+                <img src="assets/images/favicon.png" class="me-2" style="width: 40px;" /> RentCar Galaxy
+            </NavLink>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <AuthorizeView>
+                        <Authorized>
+                            <li class="nav-item">
+                                <NavLink class="nav-link text-white" href="#">Hola, @context.User.Identity!.Name</NavLink>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn btn-outline-warning" @onclick="CerrarSesion">Cerrar Sesión</button>
+                            </li>
+                        </Authorized>
+                        <NotAuthorized>
+                            <li class="nav-item">
+                                <NavLink class="nav-link text-white" href="login">Iniciar Sesión</NavLink>
+                            </li>
+                            <li class="nav-item">
+                                <NavLink class="nav-link text-white" href="register">Registrarse</NavLink>
+                            </li>
+                        </NotAuthorized>
+                    </AuthorizeView>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+@code {
+    private async Task CerrarSesion()
+    {
+        var result = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "¿Está seguro de que desea salir?",
+                Icon = SweetAlertIcon.Question,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Sí",
+                CancelButtonText = "No"
+            });
+
+        if (result.IsConfirmed)
+        {
+            var auth = (AuthenticationService)AuthenticationStateProvider;
+            await auth.Autenticar(null);
+            NavigationManager.NavigateTo("/", forceLoad: true);
+        }
+    }
+}
+

@@ -1,0 +1,16 @@
+.nav-link[b-cye0stnba1] {
+    padding: 0.75rem;
+    transition: background-color 0.2s;
+}
+
+    .nav-link:hover[b-cye0stnba1] {
+        background-color: #e9ecef;
+        border-radius: 0.25rem;
+    }
+
+    .nav-link.active[b-cye0stnba1] {
+        background-color: #ffc107;
+        color: white;
+        font-weight: bold;
+        border-radius: 0.25rem;
+    }

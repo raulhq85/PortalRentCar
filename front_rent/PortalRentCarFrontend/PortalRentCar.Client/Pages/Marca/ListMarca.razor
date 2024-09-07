@@ -1,0 +1,83 @@
+﻿@page "/marca/list"
+@inject IMarcaProxy Proxy
+@inject NavigationManager NavigationManager
+@inject IToastService ToastService
+@inject SweetAlertService Swal
+
+<ListaGenerica TItem="MarcaDtoResponse" Lista="Marcas"
+               Titulo="Lista de Marca" BotonNuevo="OnNuevo">
+    <Cabeceras>
+        <th>Id</th>
+        <th>Marca</th>
+        <th>Acciones</th>
+    </Cabeceras>
+    <Detalles>
+        <td>@context.Id</td>
+        <td>@context.Nombre</td>
+        <td>
+            <BotonesAccion TItem="MarcaDtoResponse"
+                           Item="context"
+                           BotonEditar="EditarMarca"
+                           BotonEliminar="EliminarMarca" />
+        </td>
+    </Detalles>
+</ListaGenerica>
+
+<LoadingComponent IsLoading="IsLoading" />
+
+@code {
+    public ICollection<MarcaDtoResponse>? Marcas { get; set; }
+    public bool IsLoading { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            IsLoading = true;
+            await OnLoad();
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private async Task OnLoad()
+    {
+        Marcas = await Proxy.ListAsync();
+    }
+
+    private void OnNuevo()
+    {
+        NavigationManager.NavigateTo("/marca/nuevo");
+    }
+
+    private void EditarMarca(MarcaDtoResponse item)
+    {
+        NavigationManager.NavigateTo($"/marca/editar/{item.Id}");
+    }
+
+    private async Task EliminarMarca(MarcaDtoResponse item)
+    {
+        try
+        {
+            IsLoading = true;
+            await Proxy.DeleteAsync(item.Id);
+            await OnLoad();
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+
+    }
+
+}

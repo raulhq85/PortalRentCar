@@ -1,0 +1,93 @@
+﻿@page "/index"
+@page "/"
+@using Syncfusion.Blazor.Navigations
+@using System.Threading
+@inject NavigationManager Navigation
+@inject ICatalogoVehiculoProxy CatalogoVehiculoProxy
+
+<PageTitle>Portal Alquiler de Autos</PageTitle>
+
+<div id="imagen-de-fondo"></div>
+<br/>
+<div style="margin: 0 auto 2em; max-width: 1200px; height: 430px; position: relative;">
+<SfCarousel CssClass="carousel-control" ItemsCount="@Vehiculos.Count" ShowIndicators="false" @ref="carousel" AllowInfiniteLoop="false">
+            <div style="display: flex; flex-direction: row; overflow: hidden;">
+                @for (int i = 0; i < 4 && i + currentIndex < Vehiculos.Count; i++)
+                {
+                    var vehiculo = Vehiculos[i + currentIndex];
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="card-img-container">
+                            <img class="card-img-top" src="@vehiculo.ImagenUrL" alt="@vehiculo.Nombre" />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@vehiculo.Nombre</h5>
+                                <p class="card-text"><strong>Tipo de Vehículo:</strong> @vehiculo.TipoVehiculo</p>
+                                <p class="card-text"><strong>Modelo:</strong> @vehiculo.Anio</p>
+                                <p class="card-text"><strong>Marca:</strong> @vehiculo.Marca</p>
+                                <p class="card-text"><strong>Color:</strong> @vehiculo.Color</p>
+                                    <p class="card-text"><strong>Precio por Día: </strong> S/ @vehiculo.Precio</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+</SfCarousel>
+
+    <button class="carousel-control-prev" type="button" @onclick="PreviousSlide">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" @onclick="NextSlide">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+@code {
+    private SfCarousel carousel;
+    private int currentIndex = 0;
+    private Timer _timer;
+    public VehiculoSearchHomeRequest BusquedaRequest { get; set; } = new VehiculoSearchHomeRequest();
+    private List<VehiculoHomeDtoResponse> Vehiculos { get; set; } = new List<VehiculoHomeDtoResponse>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        BusquedaRequest.Pagina = 1;
+        BusquedaRequest.Filas = 20;
+
+        var response = await CatalogoVehiculoProxy.ListarVehiculosHomeAsync(BusquedaRequest);
+        Vehiculos = response.Data.ToList();
+
+        _timer = new Timer(NextSlideCallback, null, 0, 4000);
+    }
+
+    private void NextSlideCallback(object? state)
+    {
+        InvokeAsync(() => NextSlide());
+    }
+
+    private void PreviousSlide()
+    {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : Vehiculos.Count - 4;
+        carousel.PreviousAsync();
+    }
+
+    private void NextSlide()
+    {
+        currentIndex = (currentIndex < Vehiculos.Count - 4) ? currentIndex + 1 : 0;
+        carousel.NextAsync();
+    }
+
+    private void NavigateToLogin()
+    {
+        Navigation.NavigateTo("/login");
+    }
+
+    public void Dispose()
+    {
+        // Detener el Timer cuando el componente se destruya
+        _timer?.Dispose();
+    }
+
+}

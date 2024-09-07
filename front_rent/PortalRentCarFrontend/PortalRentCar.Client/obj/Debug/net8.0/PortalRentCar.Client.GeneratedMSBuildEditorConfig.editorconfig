@@ -1,0 +1,147 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = PortalRentCar.Client
+build_property.RootNamespace = PortalRentCar.Client
+build_property.ProjectDir = E:\RENTCAR_DEV\front_rent\PortalRentCarFrontend\PortalRentCar.Client\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\RENTCAR_DEV\front_rent\PortalRentCarFrontend\PortalRentCar.Client
+build_property._RazorSourceGeneratorDebug = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Genericos/BotonesAccion.razor]
+build_metadata.AdditionalFiles.TargetPath = R2VuZXJpY29zXEJvdG9uZXNBY2Npb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Genericos/ListaGenerica.razor]
+build_metadata.AdditionalFiles.TargetPath = R2VuZXJpY29zXExpc3RhR2VuZXJpY2EucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Layout/PortalRentCarHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XFBvcnRhbFJlbnRDYXJIZWFkZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Layout/UserLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XFVzZXJMYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/Alquiler/ListAlquiler.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWxxdWlsZXJcTGlzdEFscXVpbGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/Auth/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/Auth/Recover.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxSZWNvdmVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/Auth/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxSZWdpc3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/Auth/ResetPassword.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxSZXNldFBhc3N3b3JkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/Cliente/ListCliente.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50ZVxMaXN0Q2xpZW50ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/DetalleVehiculo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV0YWxsZVZlaGljdWxvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/Marca/CrearMarca.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFyY2FcQ3JlYXJNYXJjYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/Marca/EditMarca.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFyY2FcRWRpdE1hcmNhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/Marca/ListMarca.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFyY2FcTGlzdE1hcmNhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/TipoVehiculo/CrearTipoVehiculo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGlwb1ZlaGljdWxvXENyZWFyVGlwb1ZlaGljdWxvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/TipoVehiculo/EditTipoVehiculo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGlwb1ZlaGljdWxvXEVkaXRUaXBvVmVoaWN1bG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/TipoVehiculo/ListTipoVehiculo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGlwb1ZlaGljdWxvXExpc3RUaXBvVmVoaWN1bG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/UbicacionVehiculo/UbicacionVehiculo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVWJpY2FjaW9uVmVoaWN1bG9cVWJpY2FjaW9uVmVoaWN1bG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/Vehiculo/CrearVehiculo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmVoaWN1bG9cQ3JlYXJWZWhpY3Vsby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/Vehiculo/EditVehiculo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmVoaWN1bG9cRWRpdFZlaGljdWxvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/Vehiculo/ListVehiculo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmVoaWN1bG9cTGlzdFZlaGljdWxvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Shared/DataPager.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERhdGFQYWdlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Shared/Marca/EditMarcaComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1hcmNhXEVkaXRNYXJjYUNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Shared/TipoVehiculo/EditTipoVehiculoComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFRpcG9WZWhpY3Vsb1xFZGl0VGlwb1ZlaGljdWxvQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Shared/Vehiculo/EditVehiculoComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFZlaGljdWxvXEVkaXRWZWhpY3Vsb0NvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-cye0stnba1
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/CatalogoVehiculos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0YWxvZ29WZWhpY3Vsb3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-9x6abvnxcv
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-a9bp4cpkaw
+
+[E:/RENTCAR_DEV/front_rent/PortalRentCarFrontend/PortalRentCar.Client/Shared/LoadingComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvYWRpbmdDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-qjidwetlb3

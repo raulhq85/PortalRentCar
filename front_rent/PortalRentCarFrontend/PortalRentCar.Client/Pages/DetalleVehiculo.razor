@@ -1,0 +1,162 @@
+﻿@page "/DetalleVehiculo/{Id:int}"
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web
+@using Syncfusion.Blazor
+@inject SweetAlertService Swal
+@inject IAlquilerProxy AlquilerProxy
+@inject ICatalogoVehiculoProxy CatalogoVehiculoProxy
+@inject IToastService ToastService
+@inject NavigationManager NavigationManager
+
+
+@attribute [Authorize(Roles = Constantes.RolCliente)]
+
+@if (Vehiculo is null)
+{
+    <p class="text-danger-emphasis">No hay datos para mostrar</p>
+}
+else
+{
+
+    <EditForm Model="Alquiler">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="container p-0">
+            <div class="container-fluid d-flex">
+                <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded w-100">
+                    <div class="row g-0">
+                        <!-- Columna de la imagen -->
+                        <div class="col-md-6 d-flex justify-content-center align-items-center p-4">
+                            <img src="@Vehiculo.ImagenUrL" class="img-fluid rounded-start" alt="@Vehiculo.Nombre"
+                                 style="object-fit: contain; max-width: 100%; height: 500px;">
+                        </div>
+                        <!-- Columna de los datos del vehículo -->
+                        <div class="col-md-3 d-flex flex-column justify-content-center p-4">
+                            <h4 class="card-title text-primary">@Vehiculo.Nombre</h4>
+                            <p class="card-text mb-1"><strong>Categoria:</strong> @Vehiculo.TipoVehiculo</p>
+                            <p class="card-text mb-1"><strong>Marca:</strong> @Vehiculo.Marca</p>
+                            <p class="card-text mb-1"><strong>Color:</strong> @Vehiculo.Color</p>
+                            <p class="card-text mb-1"><strong>Año:</strong> @Vehiculo.Anio</p>
+                            <p class="card-text mb-1"><strong>Placa:</strong> @Vehiculo.Placa</p>
+                            <p class="card-text mb-1"><strong>Kilometraje:</strong> @Vehiculo.Kilometraje km</p>
+                            <p class="card-text"><strong>Precio:</strong> @Vehiculo.Precio.ToString("C")</p>
+                        </div>
+                        <!-- Columna de botones y fechas -->
+                        <div class="col-md-3 d-flex flex-column justify-content-center align-items-end p-4">
+                            <div class="row w-100">
+                                <div class="col-md-12 mb-2">
+                                    <label for="fechaIni" class="form-label">Fecha de Inicio:</label>
+                                    <InputDate @bind-Value="Alquiler.FechaInicio" class="form-control" id="fechaIni"
+                                               Min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                                </div>
+                                <div class="col-md-12 mb-2">
+                                    <label for="fechaFin" class="form-label">Fecha de Fin:</label>
+                                    <InputDate @bind-Value="Alquiler.FechaFin" class="form-control" id="fechaFin"
+                                               Min="@Alquiler.FechaInicio.ToString("yyyy-MM-dd")" />
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="row w-100 mt-4">
+                                <div class="col-md-6 mb-2">
+                                    <button type="button" class="btn btn-primary w-100" @onclick="Alquilar">
+                                        <i class="bi bi-arrow-right-square me-1"></i>Comprar
+                                    </button>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <button type="button" class="btn btn-warning w-100" @onclick="OnBack">
+                                        <i class="bi bi-arrow-left-square me-1"></i>Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </EditForm>
+
+}
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private bool IsLoading { get; set; }
+    private VehiculoHomeDtoResponse? Vehiculo { get; set; }
+    private ICollection<AlquilerDtoRequest> Alquileres  { get; set; } = new List<AlquilerDtoRequest>();
+    private AlquilerDtoRequest Alquiler  { get; set; } = new AlquilerDtoRequest();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        try
+        {
+            var response = await CatalogoVehiculoProxy.GetVehiculoHomeByIdAsync(Id);
+            Vehiculo = response.Data;
+
+            Alquiler.FechaInicio = DateTime.Now.Date;
+            Alquiler.FechaFin = DateTime.Now.Date;
+            Alquiler.PrecioTotal = Vehiculo.Precio;
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+    }
+
+    private async Task Alquilar()
+    {
+
+        try
+        {
+            var result = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Html = "<div style='text-align: left;'>" +
+                           "<div style='text-align: center; font-weight: bold; font-size: 1.2em;'>Desea Alquilar el Vehículo?</div><br>" +
+                           "Precio Día: S/ " + Vehiculo.Precio + "<br>" +
+                           "Fecha: del " + Alquiler.FechaInicio.ToShortDateString() + " al " + Alquiler.FechaFin.ToShortDateString() + "<br>" +
+                           "Cantidad dias: " + ((Alquiler.FechaFin - Alquiler.FechaInicio).Days + 1) + "<br>" +
+                           "Precio Total: S/ " + ((Alquiler.FechaFin - Alquiler.FechaInicio).Days + 1) * Vehiculo.Precio +
+                           "</div>",
+                    Title = "Grabar",
+                    Icon = SweetAlertIcon.Question,
+                    ShowCancelButton = true,
+                    ConfirmButtonText = "Confirmar",
+                    CancelButtonText = "Cancelar"
+                });
+
+            if (result.IsConfirmed)
+            {
+
+                Alquiler.PrecioDia = Vehiculo.Precio;
+                Alquiler.VehiculoId = Vehiculo.Id;
+                Alquiler.PrecioTotal = ((Alquiler.FechaFin - Alquiler.FechaInicio).Days + 1) * Vehiculo.Precio;
+
+                var mensajeResponse = await AlquilerProxy.GenerateAlquilerAsync(Alquiler);
+
+                await Swal.FireAsync(new SweetAlertOptions
+                    {
+                        Title = "Alquiler de Vehiculos!",
+                        Text = mensajeResponse,
+                        Icon = SweetAlertIcon.Success
+                    });
+
+                NavigationManager.NavigateTo("/CatalogoVehiculos");
+            }
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+    }
+
+    private void OnBack()
+    {
+        NavigationManager.NavigateTo("/CatalogoVehiculos");
+    }
+
+
+}
+

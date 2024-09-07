@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "7swAwXK2nQ4IJiJnaBtkUAwTkNP9gxQvtX/sxJihVbg=",
+  "Source": "PortalRentCar.Server",
+  "BasePath": "_content/PortalRentCar.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

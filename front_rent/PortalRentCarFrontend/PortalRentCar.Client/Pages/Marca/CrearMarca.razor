@@ -1,0 +1,34 @@
+﻿@page "/marca/nuevo"
+@inject IMarcaProxy MarcaProxy
+@inject IToastService ToastService
+@inject NavigationManager NavigationManager
+@attribute [Authorize(Roles = Constantes.RolAdministrador)]
+
+<EditMarcaComponent Request="RequestNuevo" Titulo="Crear Marca" OnGrabar="OnGrabar" />
+
+<LoadingComponent IsLoading="IsLoading" />
+
+@code {
+
+    private MarcaDtoRequest RequestNuevo { get; set; } = new();
+    public bool IsLoading { get; set; }
+
+    private async Task OnGrabar()
+    {
+        try
+        {
+            IsLoading = true;
+            await MarcaProxy.CreateAsync(RequestNuevo);
+            ToastService.ShowInfo("Se creó la marca correctamente");
+            NavigationManager.NavigateTo("/marca/list");
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+﻿.card-container {
+    flex: 1 0 21%; /* Ajusta el tamaño de las tarjetas */
+    margin: 10px;
+    max-width: 280px; /* Limita el ancho de la tarjeta */
+}
+
+.card-img-container {
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+
+.card-body {
+    padding: 15px;
+}

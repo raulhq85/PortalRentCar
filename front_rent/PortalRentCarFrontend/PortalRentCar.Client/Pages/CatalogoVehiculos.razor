@@ -1,0 +1,198 @@
+﻿@page "/CatalogoVehiculos"
+@attribute [Authorize(Roles = Constantes.RolCliente)]
+
+@inject ICatalogoVehiculoProxy CatalogoVehiculoProxy
+@inject IToastService ToastService
+@inject IMarcaProxy MarcaProxy
+@inject ITipoVehiculoProxy TipoVehiculoProxy
+@inject NavigationManager NavigationManager
+
+<h3 class="text-uppercase text-center my-4">Listado de Vehiculos</h3>
+
+<div class="row">
+    <div class="col-md-3">
+        <label for="Vehiculo" class="form-label">Vehiculo:</label>
+        <InputText type="text" class="form-control" id="Vehiculo" @bind-Value="BusquedaRequest.Vehiculo" />
+    </div>
+    <div class="col-md-3">
+        <label for="MarcaId" class="form-label">Marca:</label>
+        <InputSelect id="MarcaId" class="form-select" @bind-Value="BusquedaRequest.MarcaId">
+            <option value="">Todas</option>
+            @foreach (var item in Marca)
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        </InputSelect>
+    </div>
+    <div class="col-md-3">
+        <label for="TipoVehiculoId" class="form-label">Tipo Vehiculo:</label>
+        <InputSelect id="TipoVehiculoId" class="form-select" @bind-Value="BusquedaRequest.TipoVehiculoId">
+            <option value="">Todas</option>
+            @foreach (var item in TipoVehiculo)
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        </InputSelect>
+    </div>
+    <div class="col-md-3">
+        <label for="Color" class="form-label">Color:</label>
+        <InputText type="text" class="form-control" id="Color" @bind-Value="BusquedaRequest.Color" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <label for="Anio" class="form-label">Año:</label>
+        <InputNumber type="text" class="form-control" id="Anio" @bind-Value="BusquedaRequest.Anio" />
+    </div>
+    <div class="col-md-3">
+        <label for="PrecioMinimo" class="form-label">Precio Minimo:</label>
+        <InputNumber type="text" class="form-control" id="PrecioMinimo" @bind-Value="BusquedaRequest.PrecioMinimo" />
+    </div>
+    <div class="col-md-3">
+        <label for="PrecioMaximo" class="form-label">Precio Maximo:</label>
+        <InputNumber type="text" class="form-control" id="PrecioMaximo" @bind-Value="BusquedaRequest.PrecioMaximo" />
+    </div>
+    <div class="row mt-3 justify-content-end">
+        <div class="col-auto">
+            <button class="btn btn-outline-primary" @onclick="OnSearch">
+                <i class="bi bi-search me-1"></i>Buscar
+            </button>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-outline-info" @onclick="OnLimpiar">
+                <i class="bi bi-eraser-fill me-1"></i>Limpiar
+            </button>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="d-flex flex-wrap justify-content-center">
+    @if (Vehiculos is { Count: > 0 })
+    {
+        @foreach (var item in Vehiculos)
+        {
+            <div class="card-container mx-2 my-3">
+                <div class="card shadow-sm">
+                    <div class="card-img-container">
+                        <img src="@item.ImagenUrL" class="card-img-top" alt="@item.Nombre" style="height: 150px; object-fit: cover;" />
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@item.Nombre</h5>
+                        <p class="card-text"><strong>Marca:</strong> @item.Marca</p>
+                        <p class="card-text"><strong>Tipo de Vehículo:</strong> @item.TipoVehiculo</p>
+                        <p class="card-text"><strong>Precio:</strong> @item.Precio.ToString("C")</p>
+                        <button class="btn btn-warning text-black" @onclick="() => InfoDetalleVehiculo(item.Id)">
+                            Detalle Vehiculo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p class="text-center text-danger">No se encuentra Vehiculos Disponibles, intentelo en unos momentos!</p>
+    }
+</div>
+
+<div class="row justify-content-center mt-4">
+    <DataPager @ref="Paginador" Result="PagedResult" OnPageChanged="PaginaCambiada" OnPageSizeChanged="FilasPorPagina" />
+</div>
+
+
+
+<LoadingComponent IsLoading="IsLoading" />
+
+@code {
+
+    public bool IsLoading { get; set; }
+    public DataPager Paginador { get; set; } = default!;
+    public PagedResult<VehiculoHomeDtoResponse> PagedResult { get; set; } = default!;
+    public VehiculoSearchHomeRequest BusquedaRequest { get; set; } = new VehiculoSearchHomeRequest();
+    private ICollection<VehiculoHomeDtoResponse>? Vehiculos { get; set; }
+    public ICollection<TipoVehiculoDtoResponse> TipoVehiculo { get; set; } = new List<TipoVehiculoDtoResponse>();
+    public ICollection<MarcaDtoResponse> Marca { get; set; } = new List<MarcaDtoResponse>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            IsLoading = true;
+
+            PagedResult = new PagedResult<VehiculoHomeDtoResponse>()
+                {
+                    CurrentPage = BusquedaRequest.Pagina,
+                    RowPerPage = BusquedaRequest.Filas
+                };
+
+            await OnSearch();
+
+            TipoVehiculo = await TipoVehiculoProxy.ListAsync();
+            Marca = await MarcaProxy.ListAsync();
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private void OnLimpiar()
+    {
+        BusquedaRequest = new() { Pagina = 1, Filas = 5 };
+    }
+
+
+    private async Task OnSearch()
+    {
+        try
+        {
+            IsLoading = true;
+            var response = await CatalogoVehiculoProxy.ListarVehiculosHomeAsync(BusquedaRequest);
+            Vehiculos = response.Data;
+
+            if (Vehiculos is not null)
+            {
+                PagedResult.Results = Vehiculos;
+                PagedResult.RowCount = Vehiculos.Count;
+                PagedResult.TotalPages = response.TotalPages;
+            }
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private async Task PaginaCambiada()
+    {
+        IsLoading = true;
+        BusquedaRequest.Pagina = PagedResult.CurrentPage;
+        BusquedaRequest.Filas = PagedResult.RowPerPage;
+
+        await OnSearch();
+    }
+
+    private async Task FilasPorPagina()
+    {
+        BusquedaRequest.Pagina = PagedResult.CurrentPage;
+        BusquedaRequest.Filas = PagedResult.RowPerPage;
+        await OnSearch();
+    }
+
+
+    private void InfoDetalleVehiculo(int id)
+    {
+        NavigationManager.NavigateTo($"/DetalleVehiculo/{id}");
+    }
+
+}

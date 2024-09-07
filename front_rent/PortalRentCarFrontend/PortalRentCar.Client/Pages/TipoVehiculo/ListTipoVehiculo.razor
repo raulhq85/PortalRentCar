@@ -1,0 +1,83 @@
+﻿@page "/tipovehiculo/list"
+@inject ITipoVehiculoProxy Proxy
+@inject NavigationManager NavigationManager
+@inject IToastService ToastService
+@inject SweetAlertService Swal
+
+<ListaGenerica TItem="TipoVehiculoDtoResponse" Lista="TiposVehiculos"
+               Titulo="Lista de Tipo De Vehiculo" BotonNuevo="OnNuevo">
+    <Cabeceras>
+        <th>Id</th>
+        <th>Tipo Vehiculo</th>
+        <th>Acciones</th>
+    </Cabeceras>
+    <Detalles>
+        <td>@context.Id</td>
+        <td>@context.Nombre</td>
+        <td>
+            <BotonesAccion TItem="TipoVehiculoDtoResponse"
+                           Item="context"
+                           BotonEditar="EditarTipoVehiculo"
+                           BotonEliminar="EliminarTipoVehiculo" />
+        </td>
+    </Detalles>
+</ListaGenerica>
+
+<LoadingComponent IsLoading="IsLoading" />
+
+@code {
+    public ICollection<TipoVehiculoDtoResponse>? TiposVehiculos { get; set; }
+    public bool IsLoading { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            IsLoading = true;
+            await OnLoad();
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private async Task OnLoad()
+    {
+        TiposVehiculos = await Proxy.ListAsync();
+    }
+
+    private void OnNuevo()
+    {
+        NavigationManager.NavigateTo("/tipovehiculo/nuevo");
+    }
+
+    private void EditarTipoVehiculo(TipoVehiculoDtoResponse item)
+    {
+        NavigationManager.NavigateTo($"/tipovehiculo/editar/{item.Id}");
+    }
+
+    private async Task EliminarTipoVehiculo(TipoVehiculoDtoResponse item)
+    {
+        try
+        {
+            IsLoading = true;
+            await Proxy.DeleteAsync(item.Id);
+            await OnLoad();
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+
+    }
+
+}

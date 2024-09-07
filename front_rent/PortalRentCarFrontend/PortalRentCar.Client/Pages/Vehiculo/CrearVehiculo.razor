@@ -1,0 +1,59 @@
+﻿@page "/vehiculo/nuevo"
+@inject IVehiculoProxy TallerProxy
+@inject ITipoVehiculoProxy TipoVehiculoProxy
+@inject IMarcaProxy MarcaProxy
+@inject IToastService ToastService
+@inject SweetAlertService Swal
+@inject NavigationManager NavigationManager
+@attribute [Authorize(Roles = Constantes.RolAdministrador)]
+
+<EditVehiculoComponent TipoVehiculo="TipoVehiculo"  Marca="Marca"  Titulo="Crear Vehiculo" OnGuardar="OnGrabar" />
+
+<LoadingComponent IsLoading="IsLoading" />
+
+@code {
+
+    public ICollection<TipoVehiculoDtoResponse> TipoVehiculo { get; set; } = new List<TipoVehiculoDtoResponse>();
+    public ICollection<MarcaDtoResponse> Marca { get; set; } = new List<MarcaDtoResponse>();
+    public bool IsLoading { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        TipoVehiculo = await TipoVehiculoProxy.ListAsync();
+        Marca = await MarcaProxy.ListAsync();
+    }
+
+    private async Task OnGrabar(VehiculoDtoRequest request)
+    {
+
+        try
+        {
+            var result = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Text = "Desea registrar el vehiculo?",
+                    Title = "Registrar",
+                    Icon = SweetAlertIcon.Question,
+                    ShowCancelButton = true
+                });
+
+            if (result.IsConfirmed)
+            {
+                IsLoading = true;
+
+                await TallerProxy.CreateAsync(request);
+
+                ToastService.ShowInfo("Se guardo correctamente el vehiculo");
+                NavigationManager.NavigateTo("vehiculo/list");
+                IsLoading = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+            IsLoading = false;
+        }
+
+    }
+
+   
+}
