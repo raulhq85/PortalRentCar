@@ -27,8 +27,26 @@ El proyecto utiliza las siguientes tecnologías:
 - **Front-end**: C# Blazor con .NET Core.
     - **Syncfusion.Blazor**: Para componentes avanzados en Blazor, como gráficos, tablas y formularios dinámicos.
     - **LeafletForBlazor**: Para integrar mapas interactivos y mostrar ubicaciones de vehículos en tiempo real.
+    - **Blazor.Bootstrap**: Para el uso de componentes de Bootstrap en Blazor.
+    - **CurrieTechnologies.Razor.SweetAlert2**: Para mostrar alertas personalizadas en la interfaz de usuario.
+    - **Microsoft.AspNetCore.Components.Authorization**: Para la gestión de autenticación y autorización dentro del componente Blazor.
+    - **Microsoft.AspNetCore.WebUtilities**: Para manejar la codificación y decodificación de URL en Blazor.
+    - **Scrutor**: Para realizar inyección de dependencias avanzada.
+    - **System.IdentityModel.Tokens.Jwt**: Utilizado para la creación y validación de tokens JWT para autenticación segura.
 - **Back-end**: .NET Core (C#) con Web API.
     - **FreeSpire.Office**: Para la generación y manipulación de documentos de Office como PDF, Word y Excel.
+    - **Microsoft.AspNetCore.Identity.EntityFrameworkCore**: Para la gestión de identidades y autenticación.
+    - **Microsoft.EntityFrameworkCore**: ORM utilizado para interactuar con la base de datos SQL Server.
+    - **Microsoft.AspNetCore.Authentication.JwtBearer**: Para la autenticación basada en tokens JWT.
+    - **Microsoft.EntityFrameworkCore.SqlServer**: Proveedor de base de datos para SQL Server.
+    - **Microsoft.AspNetCore.OpenApi**: Para la documentación automática de API utilizando OpenAPI/Swagger.
+    - **Dapper**: Micro ORM para ejecutar consultas SQL de manera eficiente.
+    - **LinqKit**: Extensiones LINQ que permiten combinar expresiones dinámicas y predicados complejos.
+    - **AutoMapper**: Para mapear automáticamente los objetos entre capas de la aplicación.
+    - **CloudinaryDotNet**: Utilizado para la gestión y almacenamiento de imágenes en la nube.
+    - **Swashbuckle.AspNetCore**: Para la documentación de API mediante Swagger.
+    - **SendGrid**: Para el envío de correos electrónicos.
+    - **Octokit**: Cliente API para interactuar con GitHub.
 - **Base de Datos**: SQL Server.
 - **ORM**: Entity Framework Core.
 - **Autenticación**: JWT (JSON Web Tokens).
