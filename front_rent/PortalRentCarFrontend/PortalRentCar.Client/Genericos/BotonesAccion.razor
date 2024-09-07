@@ -1,0 +1,48 @@
+﻿@using System.Diagnostics
+@typeparam TItem
+@inject SweetAlertService Swal
+@inject IToastService ToastService
+
+<button type="button" class="btn" @onclick="() => BotonEditar.InvokeAsync(Item)">
+    <i class="bi bi-pencil-square" style="color:green;"></i>
+</button>
+<button type="button" class="btn" @onclick="() => OnEliminar(Item)">
+    <i class="bi bi-trash-fill" style="color:orangered;"></i>
+</button>
+
+@code {
+
+    [Parameter]
+    [EditorRequired]
+    public TItem Item { get; set; } = default!;
+
+    [Parameter]
+    public EventCallback<TItem> BotonEditar { get; set; }
+
+    [Parameter]
+    public EventCallback<TItem> BotonEliminar { get; set; }
+
+    private async Task OnEliminar(TItem item)
+    {
+        try
+        {
+            var result = await Swal.FireAsync(new SweetAlertOptions()
+                {
+                    Text = "Desea eliminar el registro?",
+                    Title = "Eliminar",
+                    Icon = SweetAlertIcon.Question,
+                    ShowCancelButton = true
+                });
+
+            if (result.IsConfirmed)
+            {
+                await BotonEliminar.InvokeAsync(item);
+            }
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+    }
+
+}

@@ -28,7 +28,7 @@ namespace PortalRentCar.Server.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = Constantes.RolAdministrador)]
+        [Authorize(Roles = Constantes.RolAdministrador)]
         public async Task<IActionResult> Post(MarcaDtoRequest request)
         {
             var response = await _marcaService.AddAsync(request);
@@ -37,7 +37,7 @@ namespace PortalRentCar.Server.Controllers
         }
 
         [HttpPut("{id:int}")]
-        //[Authorize(Roles = Constantes.RolAdministrador)]
+        [Authorize(Roles = Constantes.RolAdministrador)]
         public async Task<IActionResult> Put(int id, MarcaDtoRequest request)
         {
             var response = await _marcaService.UpdateAsync(id, request);
@@ -46,7 +46,7 @@ namespace PortalRentCar.Server.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        //[Authorize(Roles = Constantes.RolAdministrador)]
+        [Authorize(Roles = Constantes.RolAdministrador)]
         public async Task<IActionResult> Delete(int id)
         {
             var response = await _marcaService.DeleteAsync(id);

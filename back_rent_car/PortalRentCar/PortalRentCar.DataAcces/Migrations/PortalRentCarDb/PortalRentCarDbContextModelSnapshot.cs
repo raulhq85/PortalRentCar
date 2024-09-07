@@ -150,6 +150,44 @@ namespace PortalRentCar.DataAcces.Migrations.PortalRentCarDb
                     b.HasKey("Id");
 
                     b.ToTable("Marca");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Estado = true,
+                            FechaCreacion = new DateTime(2024, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaModificacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IdUsuarioModifica = 0,
+                            Nombre = "Toyota"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Estado = true,
+                            FechaCreacion = new DateTime(2024, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaModificacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IdUsuarioModifica = 0,
+                            Nombre = "Honda"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Estado = true,
+                            FechaCreacion = new DateTime(2024, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaModificacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IdUsuarioModifica = 0,
+                            Nombre = "Ford"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Estado = true,
+                            FechaCreacion = new DateTime(2024, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaModificacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IdUsuarioModifica = 0,
+                            Nombre = "Chevrolet"
+                        });
                 });
 
             modelBuilder.Entity("PortalRentCar.Entities.TipoVehiculo", b =>
@@ -198,7 +236,7 @@ namespace PortalRentCar.DataAcces.Migrations.PortalRentCarDb
                             FechaCreacion = new DateTime(2024, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FechaModificacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IdUsuarioModifica = 0,
-                            Nombre = "HashBack"
+                            Nombre = "Hatchback"
                         },
                         new
                         {
@@ -207,7 +245,16 @@ namespace PortalRentCar.DataAcces.Migrations.PortalRentCarDb
                             FechaCreacion = new DateTime(2024, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FechaModificacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IdUsuarioModifica = 0,
-                            Nombre = "MiniVan"
+                            Nombre = "Minivan"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Estado = true,
+                            FechaCreacion = new DateTime(2024, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaModificacion = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IdUsuarioModifica = 0,
+                            Nombre = "SUV"
                         });
                 });
 

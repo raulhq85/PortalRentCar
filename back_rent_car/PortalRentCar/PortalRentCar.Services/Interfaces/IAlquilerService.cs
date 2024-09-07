@@ -12,7 +12,8 @@ namespace PortalRentCar.Services.Interfaces
     {
         Task<PaginationResponse<AlquilerDtoResponse>> ListAsync(AlquilerSearchRequest request, string cliente);
         Task<BaseResponse> AddAsync(string usuarioMail, AlquilerDtoRequest request);
-        //Task<BaseResponse> UpdateAsync(int id, AlquilerDtoRequest request); // agregar lo campos com id
         Task<BaseResponse> DeleteAsync(int id);
+        Task<BaseResponse> GetDocumentAlquilerByIdAsync(int id);
+        Task<BaseResponseGeneric<AlquilerDtoResponse>> FindByIdAsync(int id);
     }
 }

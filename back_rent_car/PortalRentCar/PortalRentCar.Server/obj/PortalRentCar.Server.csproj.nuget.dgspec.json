@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Server\\PortalRentCar.Server.csproj": {}
+    "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Server\\PortalRentCar.Server.csproj": {}
   },
   "projects": {
-    "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj": {
+    "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj",
+        "projectUniqueName": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj",
         "projectName": "PortalRentCar.DataAcces",
-        "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj",
+        "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj",
         "packagesPath": "C:\\Users\\RAUL-HQ\\.nuget\\packages\\",
-        "outputPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\obj\\",
+        "outputPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj": {
-                "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj"
+              "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj": {
+                "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj"
               },
-              "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj": {
-                "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj"
+              "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj": {
+                "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj"
               }
             }
           }
@@ -99,14 +99,14 @@
         }
       }
     },
-    "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj": {
+    "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj",
+        "projectUniqueName": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj",
         "projectName": "PortalRentCar.Entities",
-        "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj",
+        "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj",
         "packagesPath": "C:\\Users\\RAUL-HQ\\.nuget\\packages\\",
-        "outputPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Entities\\obj\\",
+        "outputPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -163,14 +163,14 @@
         }
       }
     },
-    "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj": {
+    "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj",
+        "projectUniqueName": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj",
         "projectName": "PortalRentCar.Repositories",
-        "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj",
+        "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj",
         "packagesPath": "C:\\Users\\RAUL-HQ\\.nuget\\packages\\",
-        "outputPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\obj\\",
+        "outputPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -191,11 +191,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj": {
-                "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj"
+              "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj": {
+                "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj"
               },
-              "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj": {
-                "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj"
+              "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj": {
+                "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj"
               }
             }
           }
@@ -244,14 +244,14 @@
         }
       }
     },
-    "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Server\\PortalRentCar.Server.csproj": {
+    "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Server\\PortalRentCar.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Server\\PortalRentCar.Server.csproj",
+        "projectUniqueName": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Server\\PortalRentCar.Server.csproj",
         "projectName": "PortalRentCar.Server",
-        "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Server\\PortalRentCar.Server.csproj",
+        "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Server\\PortalRentCar.Server.csproj",
         "packagesPath": "C:\\Users\\RAUL-HQ\\.nuget\\packages\\",
-        "outputPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Server\\obj\\",
+        "outputPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -272,17 +272,17 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj": {
-                "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj"
+              "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj": {
+                "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.DataAcces\\PortalRentCar.DataAcces.csproj"
               },
-              "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj": {
-                "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj"
+              "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj": {
+                "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj"
               },
-              "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj": {
-                "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj"
+              "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj": {
+                "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj"
               },
-              "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Services\\PortalRentCar.Services.csproj": {
-                "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Services\\PortalRentCar.Services.csproj"
+              "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Services\\PortalRentCar.Services.csproj": {
+                "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Services\\PortalRentCar.Services.csproj"
               }
             }
           }
@@ -362,14 +362,14 @@
         }
       }
     },
-    "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Services\\PortalRentCar.Services.csproj": {
+    "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Services\\PortalRentCar.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Services\\PortalRentCar.Services.csproj",
+        "projectUniqueName": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Services\\PortalRentCar.Services.csproj",
         "projectName": "PortalRentCar.Services",
-        "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Services\\PortalRentCar.Services.csproj",
+        "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Services\\PortalRentCar.Services.csproj",
         "packagesPath": "C:\\Users\\RAUL-HQ\\.nuget\\packages\\",
-        "outputPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Services\\obj\\",
+        "outputPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -390,11 +390,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj": {
-                "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj"
+              "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj": {
+                "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Entities\\PortalRentCar.Entities.csproj"
               },
-              "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj": {
-                "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj"
+              "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj": {
+                "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Repositories\\PortalRentCar.Repositories.csproj"
               }
             }
           }
@@ -418,6 +418,14 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "CloudinaryDotNet": {
+              "target": "Package",
+              "version": "[1.26.2, )"
+            },
+            "FreeSpire.Office": {
+              "target": "Package",
+              "version": "[8.2.0, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.7, )"
@@ -425,6 +433,10 @@
             "Microsoft.AspNetCore.WebUtilities": {
               "target": "Package",
               "version": "[8.0.7, )"
+            },
+            "Octokit": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             },
             "SendGrid": {
               "target": "Package",
@@ -451,14 +463,14 @@
         }
       }
     },
-    "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj": {
+    "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj",
+        "projectUniqueName": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj",
         "projectName": "PortalRentCar.Shared",
-        "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj",
+        "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj",
         "packagesPath": "C:\\Users\\RAUL-HQ\\.nuget\\packages\\",
-        "outputPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Shared\\obj\\",
+        "outputPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

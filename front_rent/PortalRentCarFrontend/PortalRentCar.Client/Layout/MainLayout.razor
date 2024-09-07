@@ -1,3 +1,95 @@
 ﻿@inherits LayoutComponentBase
 
-@Body
+<PortalRentCarHeader />
+<BlazoredToasts />
+
+<div class="container-fluid">
+    <div class="row gx-2">
+        <div class="col-md-2 d-none d-md-block">
+            <aside class="bg-light p-3 border-end border-dark h-100">
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <NavLink href="index" class="nav-link link-dark d-flex align-items-center nav-hover-effect">
+                            <i class="bi bi-house me-1"></i>
+                            <span>Inicio</span>
+                        </NavLink>
+                    </li>
+                    <AuthorizeView Roles="@Constantes.RolAdministrador">
+                        <Authorized>
+                            <li class="nav-item mb-2">
+                                <NavLink href="Cliente/list" class="nav-link link-dark d-flex align-items-center nav-hover-effect">
+                                    <i class="bi bi-person me-1"></i>
+                                    <span>Clientes</span>
+                                </NavLink>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <NavLink href="Marca/list" class="nav-link link-dark d-flex align-items-center nav-hover-effect">
+                                    <i class="bi bi-tags me-1"></i>
+                                    <span>Marca</span>
+                                </NavLink>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <NavLink href="TipoVehiculo/list" class="nav-link link-dark d-flex align-items-center nav-hover-effect">
+                                    <i class="bi bi-box-seam me-1"></i>
+                                    <span>Tipo Vehiculo</span>
+                                </NavLink>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <NavLink href="Vehiculo/list" class="nav-link link-dark d-flex align-items-center nav-hover-effect">
+                                    <i class="bi bi-person me-1"></i>
+                                    <span>Vehiculos</span>
+                                </NavLink>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <NavLink href="Alquiler/list" class="nav-link link-dark d-flex align-items-center nav-hover-effect">
+                                    <i class="bi bi-clipboard-pulse me-1"></i>
+                                    <span>Alquileres</span>
+                                </NavLink>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <NavLink href="UbicacionVehiculo/ubicacion" class="nav-link link-dark d-flex align-items-center nav-hover-effect">
+                                    <i class="bi bi-clipboard-pulse me-1"></i>
+                                    <span>Ubicacion Vehiculo</span>
+                                </NavLink>
+                            </li>
+                        </Authorized>
+                    </AuthorizeView>
+                    <AuthorizeView Roles="@Constantes.RolCliente">
+                        <li class="nav-item mb-2">
+                            <NavLink href="Alquiler/list" class="nav-link link-dark d-flex align-items-center nav-hover-effect">
+                                <i class="bi bi-clipboard-pulse me-1"></i>
+                                <span>Alquileres</span>
+                            </NavLink>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <NavLink href="UbicacionVehiculo/ubicacion" class="nav-link link-dark d-flex align-items-center nav-hover-effect">
+                                <i class="bi bi-clipboard-pulse me-1"></i>
+                                <span>Ubicacion Vehiculo</span>
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink href="CatalogoVehiculos" class="nav-link link-dark d-flex align-items-center">
+                                <i class="bi bi-cart-plus me-1"></i>
+                                <span>Catalogo Vehiculos</span>
+                            </NavLink>
+                        </li>
+                    </AuthorizeView>
+                </ul>
+            </aside>
+        </div>
+        <div class="col-md-10">
+            @Body
+        </div>
+    </div>
+</div>
+
+<style>
+    .nav-hover-effect {
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .nav-hover-effect:hover {
+            background-color: #d4d6d9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+</style>

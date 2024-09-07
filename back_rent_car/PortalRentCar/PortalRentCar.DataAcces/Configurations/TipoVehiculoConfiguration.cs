@@ -17,9 +17,10 @@ namespace PortalRentCar.DataAcces.Configurations
 
             builder.HasData(new List<TipoVehiculo>
             {
-                new() { Id = 1, Nombre = "Sedan", FechaCreacion = fecha},
-                new() { Id = 2, Nombre = "HashBack", FechaCreacion = fecha },
-                new() { Id = 3, Nombre = "MiniVan", FechaCreacion = fecha }
+                new() { Id = 1, Nombre = "Sedan", FechaCreacion = fecha },
+                new() { Id = 2, Nombre = "Hatchback", FechaCreacion = fecha },
+                new() { Id = 3, Nombre = "Minivan", FechaCreacion = fecha },
+                new() { Id = 4, Nombre = "SUV", FechaCreacion = fecha }
             });
             builder.HasQueryFilter(p => p.Estado);
         }

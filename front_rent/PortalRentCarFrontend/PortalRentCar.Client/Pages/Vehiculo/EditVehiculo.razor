@@ -1,0 +1,77 @@
+﻿@page "/vehiculo/editar/{Id:int}"
+@inject IVehiculoProxy ProductoProxy
+@inject ITipoVehiculoProxy TipoVehiculoProxy
+@inject IMarcaProxy MarcaProxy
+@inject IToastService ToastService
+@inject NavigationManager NavigationManager
+@inject SweetAlertService Swal
+@attribute [Authorize(Roles = Constantes.RolAdministrador)]
+
+<EditVehiculoComponent TipoVehiculo="TipoVehiculo" Marca="Marca" Titulo="Editar VEHICULO"
+                     OnGuardar="OnGrabar" Request="Request" />
+
+<LoadingComponent IsLoading="IsLoading" />
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    public ICollection<TipoVehiculoDtoResponse> TipoVehiculo { get; set; } = new List<TipoVehiculoDtoResponse>();
+    public ICollection<MarcaDtoResponse> Marca { get; set; } = new List<MarcaDtoResponse>();
+
+    private VehiculoDtoRequest Request { get; set; } = new();
+
+    public bool IsLoading { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        TipoVehiculo = await TipoVehiculoProxy.ListAsync();
+        Marca = await MarcaProxy.ListAsync();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        try
+        {
+            Request = await ProductoProxy.FindByIdAsync(Id);
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+    }
+
+    private async Task OnGrabar(VehiculoDtoRequest request)
+    {
+
+        try
+        {
+            var result = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Text = "Desea Editar el vehiculo?",
+                    Title = "Editar",
+                    Icon = SweetAlertIcon.Question,
+                    ShowCancelButton = true
+                });
+
+            if (result.IsConfirmed)
+            {
+                    IsLoading = true;
+
+                    await ProductoProxy.UpdateAsync(Id, request);
+
+                    ToastService.ShowInfo("Se actualizó correctamente el vehiculo");
+                    NavigationManager.NavigateTo("vehiculo/list");
+                IsLoading = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+            IsLoading = false;
+        }
+
+    }
+}

@@ -1,0 +1,113 @@
+﻿@page "/ubicacionvehiculo/ubicacion"
+@using LeafletForBlazor
+@inject IToastService ToastService
+@inject IVehiculoProxy Proxy
+@inject HttpClient HttpClient
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 bg-light p-3 border-end" style="max-height: 850px; overflow-y:auto;">
+            <h4>Lista de Vehículos</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Vehiculo</td>
+                        <td>Placa</td>
+                        <td>Ubicacion</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var vehiculo in UbicacionVehiculos)
+                    {
+                        <tr @onclick="() => CenterMapOnVehicle(vehiculo)">
+                            <td>@vehiculo.nombre</td>
+                            <td>@vehiculo.Placa</td>
+                            <td >@vehiculo.Color</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-9 p-0">
+            <RealTimeMap @ref="realTimeMap" Parameters="parameters"  height="850px" width="100%" ></RealTimeMap>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public ICollection<UbicacionVehiculoDtoResponse> UbicacionVehiculos { get; set; } = new List<UbicacionVehiculoDtoResponse>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        UbicacionVehiculos = await Proxy.GetListVehiculoUbicacion();
+    }
+
+    RealTimeMap? realTimeMap;
+
+    RealTimeMap.LoadParameters parameters = new RealTimeMap.LoadParameters()
+        {
+            zoomLevel = 12,
+            location = new RealTimeMap.Location()
+            {
+                latitude = -12.039967,
+                longitude = -77.076214
+            }
+        };
+
+    private async Task CenterMapOnVehicle(UbicacionVehiculoDtoResponse vehicle)
+    {
+
+        RealTimeMap.PointTooltip tooltip = new RealTimeMap.PointTooltip()
+            {
+                content = $@"
+                   <div style='font-family: Arial, sans-serif; width: 250px;'>
+                    <div style='font-weight: bold; margin-bottom: 4px;'>
+                        <p style='margin: 0;'><strong>Placa:</strong> {vehicle.Placa}</p>
+                        <p style='margin: 0;'><strong>Cliente:</strong> {vehicle.Cliente}</p>
+                    </div>
+                    <table style='width: 100%; border-collapse: collapse; margin-bottom: 10px;'>
+                        <tr>
+                            <td style='border: 1px solid #ddd; padding: 4px;'><strong>Color:</strong></td>
+                            <td style='border: 1px solid #ddd; padding: 4px;'>{vehicle.Color}</td>
+                        </tr>
+                        <tr>
+                            <td style='border: 1px solid #ddd; padding: 4px;'><strong>Marca:</strong></td>
+                            <td style='border: 1px solid #ddd; padding: 4px;'>{vehicle.Marca}</td>
+                        </tr>
+                        <tr>
+                            <td style='border: 1px solid #ddd; padding: 4px;'><strong>Tipo:</strong></td>
+                            <td style='border: 1px solid #ddd; padding: 4px;'>{vehicle.TipoVehiculo}</td>
+                        </tr>
+                        <tr>
+                            <td style='border: 1px solid #ddd; padding: 4px;'><strong>Año:</strong></td>
+                            <td style='border: 1px solid #ddd; padding: 4px;'>{vehicle.Anio}</td>
+                        </tr>
+                        <tr>
+                            <td style='border: 1px solid #ddd; padding: 4px;'><strong>Kilometraje:</strong></td>
+                            <td style='border: 1px solid #ddd; padding: 4px;'>{vehicle.Kilometraje} km</td>
+                        </tr>
+                        <tr>
+                            <td style='border: 1px solid #ddd; padding: 4px;'><strong>Precio:</strong></td>
+                            <td style='border: 1px solid #ddd; padding: 4px;'>S/ {vehicle.Precio}</td>
+                        </tr>
+                        <tr>
+                            <td style='border: 1px solid #ddd; padding: 4px;'><strong>Nro Alquiler:</strong></td>
+                            <td style='border: 1px solid #ddd; padding: 4px;'>{vehicle.NroAlquiler}</td>
+                        </tr>
+                    </table>
+                    <img src='{vehicle.ImagenUrL}' alt='Imagen del Vehículo' style='width:200px; height:auto; display:block; margin: 0 auto;' />
+                </div>",
+                permanent = true
+            };
+
+        List<List<double>> coordinates = new List<List<double>>() {
+            new List<double>() {vehicle.Latitud, vehicle.Longitud }
+        };
+
+        if (realTimeMap != null)
+            await realTimeMap.movePoint(coordinates[0].ToArray(), tooltip);
+
+    }
+
+}

@@ -24,6 +24,8 @@ namespace PortalRentCar.Services.Profiles
                 .ReverseMap();
 
             CreateMap<VehiculoHomeInfo, VehiculoHomeDtoResponse>();
+
+            //CreateMap<UbicacionVehiculoInfo, UbicacionVehiculoDtoResponse>();
         }
     }
 }

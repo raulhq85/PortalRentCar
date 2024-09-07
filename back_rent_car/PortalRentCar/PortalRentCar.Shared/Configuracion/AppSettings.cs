@@ -12,6 +12,14 @@ namespace PortalRentCar.Shared.Configuracion
         public SmtpConfiguration SmtpConfiguration { get; set; }
         public Jwt Jwt { get; set; }
         public StorageConfiguration StorageConfiguration { get; set; }
+
+        public CloudinaryConfiguration CloudinaryConfiguration { get; set; }
+
+        //public string GitHubToken { get; set; }  // Token de acceso personal para GitHub
+        //public string GitHubOwner { get; set; }  // Propietario del repositorio
+        //public string GitHubRepository { get; set; }  // Nombre del repositorio
+        //public string GitHubBranchName { get; set; }  // Rama en la que se subirá el archivo
+
     }
 
     public class Jwt
@@ -31,9 +39,19 @@ namespace PortalRentCar.Shared.Configuracion
         public bool UsarSsl { get; set; }
     }
 
+
+
     public class StorageConfiguration
     {
         public string Path { get; set; }
         public string PublicUrl { get; set; }
     }
+
+    public class CloudinaryConfiguration
+    {
+        public string CloudName { get; set; }
+        public string ApiKey { get; set; }
+        public string ApiSecret { get; set; }
+    }
+
 }

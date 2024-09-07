@@ -20,3 +20,5 @@ function BlazorDownloadFile(filename, content) {
     // No necesito conservar la URL
     URL.revokeObjectURL(exportUrl);
 }
+
+

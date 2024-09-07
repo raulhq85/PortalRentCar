@@ -10,3 +10,15 @@ E:\RENTCAR_DEV\front_rent_car\PortalRentCar\PortalRentCar.Entities\obj\Debug\net
 E:\RENTCAR_DEV\front_rent_car\PortalRentCar\PortalRentCar.Entities\obj\Debug\net8.0\refint\PortalRentCar.Entities.dll
 E:\RENTCAR_DEV\front_rent_car\PortalRentCar\PortalRentCar.Entities\obj\Debug\net8.0\PortalRentCar.Entities.pdb
 E:\RENTCAR_DEV\front_rent_car\PortalRentCar\PortalRentCar.Entities\obj\Debug\net8.0\ref\PortalRentCar.Entities.dll
+E:\RENTCAR_DEV\back_rent_car\PortalRentCar\PortalRentCar.Entities\bin\Debug\net8.0\PortalRentCar.Entities.deps.json
+E:\RENTCAR_DEV\back_rent_car\PortalRentCar\PortalRentCar.Entities\bin\Debug\net8.0\PortalRentCar.Entities.dll
+E:\RENTCAR_DEV\back_rent_car\PortalRentCar\PortalRentCar.Entities\bin\Debug\net8.0\PortalRentCar.Entities.pdb
+E:\RENTCAR_DEV\back_rent_car\PortalRentCar\PortalRentCar.Entities\obj\Debug\net8.0\PortalRentCar.Entities.GeneratedMSBuildEditorConfig.editorconfig
+E:\RENTCAR_DEV\back_rent_car\PortalRentCar\PortalRentCar.Entities\obj\Debug\net8.0\PortalRentCar.Entities.AssemblyInfoInputs.cache
+E:\RENTCAR_DEV\back_rent_car\PortalRentCar\PortalRentCar.Entities\obj\Debug\net8.0\PortalRentCar.Entities.AssemblyInfo.cs
+E:\RENTCAR_DEV\back_rent_car\PortalRentCar\PortalRentCar.Entities\obj\Debug\net8.0\PortalRentCar.Entities.csproj.CoreCompileInputs.cache
+E:\RENTCAR_DEV\back_rent_car\PortalRentCar\PortalRentCar.Entities\obj\Debug\net8.0\PortalRentCar.Entities.sourcelink.json
+E:\RENTCAR_DEV\back_rent_car\PortalRentCar\PortalRentCar.Entities\obj\Debug\net8.0\PortalRentCar.Entities.dll
+E:\RENTCAR_DEV\back_rent_car\PortalRentCar\PortalRentCar.Entities\obj\Debug\net8.0\refint\PortalRentCar.Entities.dll
+E:\RENTCAR_DEV\back_rent_car\PortalRentCar\PortalRentCar.Entities\obj\Debug\net8.0\PortalRentCar.Entities.pdb
+E:\RENTCAR_DEV\back_rent_car\PortalRentCar\PortalRentCar.Entities\obj\Debug\net8.0\ref\PortalRentCar.Entities.dll

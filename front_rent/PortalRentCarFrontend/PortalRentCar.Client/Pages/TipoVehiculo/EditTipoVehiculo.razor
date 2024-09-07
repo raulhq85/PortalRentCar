@@ -1,0 +1,42 @@
+﻿@page "/tipovehiculo/editar/{Id:int}"
+@inject ITipoVehiculoProxy Proxy
+@inject NavigationManager NavigationManager
+@inject IToastService ToastService
+
+<EditTipoVehiculoComponent Request="Request" Titulo="Editar Tipo Vehiculo" OnGrabar="OnActualizar" />
+
+<LoadingComponent IsLoading="IsLoading" />
+
+@code {
+    
+    [Parameter]
+    public int Id { get; set; }
+
+    public TipoVehiculoDtoRequest Request { get; set; } = new();
+    public bool IsLoading { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Request = await Proxy.FindByIdAsync(Id);
+    }
+
+    private async Task OnActualizar()
+    {
+        try
+        {
+            IsLoading = true;
+            await Proxy.UpdateAsync(Id, Request);
+            ToastService.ShowSuccess("Registro actualizado");
+            NavigationManager.NavigateTo("/tipovehiculo/list");
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+}

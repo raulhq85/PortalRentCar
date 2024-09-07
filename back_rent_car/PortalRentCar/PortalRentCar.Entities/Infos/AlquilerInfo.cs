@@ -9,6 +9,7 @@ namespace PortalRentCar.Entities.Infos
     public class AlquilerInfo
     {
         public int Id { get; set; }
+        public string Nombre { get; set; } = default!;
         public string NroAlquiler { get; set; } = default!;
         public DateTime Fecha {  get; set; }
         public string Cliente { get; set; } = default!;
@@ -18,5 +19,7 @@ namespace PortalRentCar.Entities.Infos
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin {  get; set; }
         public decimal PrecioTotal { get; set; }
+        public string Marca { get; set; } = default!;
+        public decimal PrecioDia { get; set; }
     }
 }

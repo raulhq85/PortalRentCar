@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.IdentityModel.Tokens;
 using PortalRentCar.DataAcces;
+using PortalRentCar.Entities.Infos;
 using PortalRentCar.Repositories.Interfaces;
 using PortalRentCar.Services.Interfaces;
 using PortalRentCar.Services.Profiles;
@@ -14,8 +15,6 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 const string corConfiguration = "Blazor";
 builder.Services.Configure<AppSettings>(builder.Configuration);
-
-builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
@@ -76,7 +75,8 @@ builder.Services.AddAutoMapper(config =>
     config.AddProfile<MarcaProfile>();
     config.AddProfile<VehiculoProfile>();
     config.AddProfile<ClienteProfile>();
-   config.AddProfile<AlquilerProfile>();
+    config.AddProfile<AlquilerProfile>();
+    config.AddProfile<UbicacionProfile>();
 });
 
 builder.Services.AddAuthorization();
@@ -98,7 +98,8 @@ builder.Services.AddAuthentication(x =>
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(secretKey)
+        IssuerSigningKey = new SymmetricSecurityKey(secretKey),
+        ClockSkew = TimeSpan.Zero
     };
 });
 
@@ -110,6 +111,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
 
 app.UseHttpsRedirection();
 

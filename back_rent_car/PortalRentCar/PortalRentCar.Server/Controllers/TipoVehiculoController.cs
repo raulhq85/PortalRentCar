@@ -27,7 +27,7 @@ namespace PortalRentCar.Server.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = Constantes.RolAdministrador)]
+        [Authorize(Roles = Constantes.RolAdministrador)]
         public async Task<IActionResult> Post(TipoVehiculoDtoRequest request)
         {
             var response = await _tipoVehiculoService.AddAsync(request);
@@ -36,7 +36,7 @@ namespace PortalRentCar.Server.Controllers
         }
 
         [HttpPut("{id:int}")]
-        //[Authorize(Roles = Constantes.RolAdministrador)]
+        [Authorize(Roles = Constantes.RolAdministrador)]
         public async Task<IActionResult> Put(int id, TipoVehiculoDtoRequest request)
         {
             var response = await _tipoVehiculoService.UpdateAsync(id, request);
@@ -45,7 +45,7 @@ namespace PortalRentCar.Server.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        //[Authorize(Roles = Constantes.RolAdministrador)]
+        [Authorize(Roles = Constantes.RolAdministrador)]
         public async Task<IActionResult> Delete(int id)
         {
             var response = await _tipoVehiculoService.DeleteAsync(id);

@@ -26,7 +26,7 @@ namespace PortalRentCar.Server.Controllers
         }
 
         [HttpPut("{id:int}")]
-        //[Authorize(Roles = Constantes.RolAdministrador)]
+        [Authorize(Roles = Constantes.RolAdministrador)]
         public async Task<IActionResult> Put(int id, ClienteDtoRequest request)
         {
             var response = await _service.UpdateAsync(id, request);

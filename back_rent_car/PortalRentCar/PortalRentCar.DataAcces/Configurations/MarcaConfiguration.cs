@@ -16,6 +16,16 @@ namespace PortalRentCar.DataAcces.Configurations
             builder.HasQueryFilter( p => p.Estado);
             builder.Property(p => p.FechaCreacion)
                 .HasColumnType("DATE");
+
+            var fecha = DateTime.Parse("2024-07-28");
+
+            builder.HasData(new List<Marca>
+            {
+                new() { Id = 1, Nombre = "Toyota", FechaCreacion = fecha },
+                new() { Id = 2, Nombre = "Honda", FechaCreacion = fecha },
+                new() { Id = 3, Nombre = "Ford", FechaCreacion = fecha },
+                new() { Id = 4, Nombre = "Chevrolet", FechaCreacion = fecha }
+            });
         }
     }
 }

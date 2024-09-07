@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
 using PortalRentCar.Entities;
+using PortalRentCar.Repositories.Inplementaciones;
 using PortalRentCar.Repositories.Interfaces;
 using PortalRentCar.Services.Interfaces;
 using PortalRentCar.Services.Utils;
@@ -19,12 +20,14 @@ namespace PortalRentCar.Services.Implementaciones
         private readonly IVehiculoRepository _vehiculoRepository;
         private readonly ILogger<VehiculoService> _logger;
         private readonly IMapper _mapper;
+        private readonly IFileUploader _fileUploader;
 
-        public VehiculoService(IVehiculoRepository vehiculoRepository, ILogger<VehiculoService> logger, IMapper mapper)
+        public VehiculoService(IVehiculoRepository vehiculoRepository, ILogger<VehiculoService> logger, IMapper mapper, IFileUploader fileUploader)
         {
             _vehiculoRepository = vehiculoRepository;
             _logger = logger;
             _mapper = mapper;
+            _fileUploader = fileUploader;
         }
 
         public async Task<BaseResponse> AddAsync(VehiculoDtoRequest request)
@@ -33,6 +36,10 @@ namespace PortalRentCar.Services.Implementaciones
             try
             {
                 var entity = _mapper.Map<Vehiculo>(request);
+
+                entity.ImagenUrL = await _fileUploader.UploadFileAsync(request.Base64Imagen, request.ArchivoImagen);
+               // entity.TemarioUrl = await _fileUploader.UploadFileAsync(request.Base64Temario, request.ArchivoTemario);
+
                 await _vehiculoRepository.AddAsync(entity);
                 response.Success = true;
             }
@@ -91,6 +98,23 @@ namespace PortalRentCar.Services.Implementaciones
             return response;
         }
 
+        //public async Task<BaseResponseGeneric<ICollection<UbicacionVehiculoDtoResponse>>> GetListUbicacionVehiculo()
+        //{
+        //    var response = new BaseResponseGeneric<ICollection<UbicacionVehiculoDtoResponse>>();
+        //    try
+        //    {
+        //        var collection = await _vehiculoRepository.ListAsyncUbicacionVehiculo();
+        //        response.Data = _mapper.Map<ICollection<UbicacionVehiculoDtoResponse>>(collection);
+        //        response.Success = true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response.ErrorMessage = "Error al listar el tipo de vehiculo";
+        //        _logger.LogCritical(ex, "{ErrorMessage} {Message}", response.ErrorMessage, ex.Message);
+        //    }
+        //    return response;
+        //}
+
         public async Task<BaseResponseGeneric<VehiculoHomeDtoResponse>> GetVehiculoHomeAsyncById(int id)
         {
             var response = new BaseResponseGeneric<VehiculoHomeDtoResponse>();
@@ -120,7 +144,7 @@ namespace PortalRentCar.Services.Implementaciones
 
             try
             {
-                var tupla = await _vehiculoRepository.ListarVehiculoHomeAsync(request.Nombre, request.TipoVehiculoId, request.MarcaId, request.Anio, request.PrecioMinimo, request.PrecioMaximo,  request.Pagina, request.Filas);
+                var tupla = await _vehiculoRepository.ListarVehiculoHomeAsync(request.Vehiculo, request.TipoVehiculoId, request.MarcaId, request.Anio, request.PrecioMinimo, request.PrecioMaximo,  request.Pagina, request.Filas);
 
                 response.Data = _mapper.Map<ICollection<VehiculoHomeDtoResponse>>(tupla.Collection);
                 response.TotalPages = Helper.GetTotalPages(tupla.Total, request.Filas);
@@ -169,6 +193,11 @@ namespace PortalRentCar.Services.Implementaciones
 
                 _mapper.Map(request, entity);
 
+                if (request.Base64Imagen != null)
+                {
+                    entity.ImagenUrL = await _fileUploader.UploadFileAsync(request.Base64Imagen, request.ArchivoImagen);
+                }
+
                 await _vehiculoRepository.UpdateAsync();
                 response.Success = true;
             }
@@ -179,5 +208,9 @@ namespace PortalRentCar.Services.Implementaciones
             }
             return response;
         }
+
+       
+
+
     }
 }

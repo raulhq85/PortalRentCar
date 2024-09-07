@@ -1,0 +1,298 @@
+﻿@page "/alquiler/list"
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+@inject IAlquilerProxy AlquilerProxy
+@inject ITipoVehiculoProxy TipoVehiculoProxy
+@inject IMarcaProxy MarcaProxy
+@inject NavigationManager Nav
+@inject IToastService Toaster
+@inject SweetAlertService Swal
+@inject IJSRuntime JsRuntime
+@inject HttpClient HttpClient
+@inject IWebAssemblyHostEnvironment WebAssemblyHost
+@inject IJSRuntime JS
+
+<ListaGenerica TItem="AlquilerDtoResponse" Lista="Alquileres" Titulo="Lista de Alquileres Realizados">
+    <Filtros>
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="NroAlquiler" class="form-label">NroVenta:</label>
+                    <InputText type="text" class="form-control" id="NroAlquiler" @bind-Value="BusquedaRequest.NroAlquiler" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="Cliente" class="form-label">Cliente:</label>
+                    <InputText type="text" class="form-control" id="Cliente" @bind-Value="BusquedaRequest.Cliente" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="Placa" class="form-label">Placa:</label>
+                    <InputText type="text" class="form-control" id="Placa" @bind-Value="BusquedaRequest.Placa" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="Vehiculo" class="form-label">Vehiculo:</label>
+                    <InputText type="text" class="form-control" id="Vehiculo" @bind-Value="BusquedaRequest.Vehiculo" />
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 justify-content-end">
+            <div class="col-3">
+                <label for="tipovehiculo" class="form-label">Tipo Vehiculo:</label>
+                <InputSelect id="tipovehiculo" class="form-select" @bind-Value="BusquedaRequest.TipoVehiculoId">
+                    <option value="">Todos</option>
+                    @foreach (var item in TipoVehiculo)
+                    {
+                        <option value="@item.Id">@item.Nombre</option>
+                    }
+                </InputSelect>
+            </div>
+            <div class="col-3">
+                <label for="marca" class="form-label">Marca:</label>
+                <InputSelect id="marca" class="form-select" @bind-Value="BusquedaRequest.MarcaId">
+                    <option value="">Todos</option>
+                    @foreach (var item in Marca)
+                    {
+                        <option value="@item.Id">@item.Nombre</option>
+                    }
+                </InputSelect>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="Vehiculo" class="form-label">Precio Minimo:</label>
+                    <InputNumber type="text" class="form-control" id="Vehiculo" @bind-Value="BusquedaRequest.PrecioMinimo" step="1" oninput="if(this.value < 1) this.value = '';" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="Vehiculo" class="form-label">Precio Maximo:</label>
+                    <InputNumber type="text" class="form-control" id="Vehiculo" @bind-Value="BusquedaRequest.PrecioMaximo" step="1" oninput="if(this.value < 1) this.value = '';" />
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 justify-content-end">
+            <div class="col-auto">
+                <button class="btn btn-outline-primary" @onclick="OnSearch">
+                    <i class="bi bi-search me-1"></i>Buscar
+                </button>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-outline-info" @onclick="OnLimpiar">
+                    <i class="bi bi-eraser-fill me-1"></i>Limpiar
+                </button>
+            </div>
+        </div>
+    </Filtros>
+    <Cabeceras>
+        <th>#</th>
+        <th>Cliente</th>
+        <th>Nro Alquiler</th>
+        <th>Vehiculo</th>
+        <th>Placa</th>
+        <th>Tipo Vehiculo</th>
+        <th>Marca</th>
+        <th>Monto Dia</th>
+        <th>Cantidad Dias</th>
+        <th>Monto Total</th>
+        <th>Acción</th>
+    </Cabeceras>
+    <Detalles>
+        <td>@context.Id</td>
+        <td>@context.Cliente</td>
+        <td>@context.NroAlquiler</td>
+        <td>@context.Nombre</td>
+        <td>@context.Placa</td>
+        <td>@context.TipoVehiculo</td>
+        <td>@context.Marca</td>
+        <td>@context.PrecioDia</td>
+        <td>@context.CantidadDias</td>
+        <td>@context.PrecioTotal</td>
+        <td>
+            <button type="button" class="btn" @onclick="() => OnDescargarPDFAlquiler(context.Id)">
+                <i class="bi bi-file-earmark-pdf" style="color:red;"></i>
+            </button>
+            <span>&nbsp;&nbsp;</span>
+            <AuthorizeView Roles="@Constantes.RolAdministrador">
+                <Authorized Context="authorizedContext">
+                    <button type="button" class="btn" @onclick="() => OnEliminar(context.Id)">
+                        <i class="bi bi-trash-fill" style="color:orangered;"></i>
+                    </button>
+                </Authorized>
+            </AuthorizeView>
+        </td>
+    </Detalles>
+</ListaGenerica>
+
+<DataPager @ref="Paginador" Result="PagedResult" OnPageChanged="PaginaCambiada" OnPageSizeChanged="FilasPorPagina"></DataPager>
+
+<LoadingComponent IsLoading="IsLoading" />
+ 
+<div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="pdfModalLabel">PDF Documento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @if (pdfUrl != null)
+                {
+                    <iframe src="@pdfUrl" width="100%" height="600px"></iframe>
+                }
+                else
+                {
+                    <p>Cargando...</p>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public AlquilerSearchRequest BusquedaRequest { get; set; } = new()
+        {
+            Vehiculo = null,
+            Cliente = null,
+            NroAlquiler = null,
+            MarcaId = null,
+            Placa = null,
+            PrecioMaximo = null,
+            PrecioMinimo = null,
+            TipoVehiculoId = null,
+            Pagina = 1,
+            Filas = 5
+        };
+
+    private string pdfUrl;
+
+    public ICollection<AlquilerDtoResponse>? Alquileres { get; set; }
+
+    public bool IsLoading { get; set; }
+
+    public DataPager Paginador { get; set; } = default!;
+
+    public PagedResult<AlquilerDtoResponse> PagedResult { get; set; } = default!;
+
+    public ICollection<TipoVehiculoDtoResponse> TipoVehiculo { get; set; } = new List<TipoVehiculoDtoResponse>();
+    public ICollection<MarcaDtoResponse> Marca { get; set; } = new List<MarcaDtoResponse>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        TipoVehiculo = await TipoVehiculoProxy.ListAsync();
+        Marca = await MarcaProxy.ListAsync();
+
+        PagedResult = new PagedResult<AlquilerDtoResponse>()
+            {
+                CurrentPage = BusquedaRequest.Pagina,
+                RowPerPage = BusquedaRequest.Filas
+            };
+
+        await OnSearch();
+    }
+
+
+    private async Task OnSearch()
+    {
+        try
+
+        {
+            IsLoading = true;
+
+            var response = await AlquilerProxy.ListAsync(BusquedaRequest);
+
+            Alquileres = response.Data;
+            if (Alquileres is not null)
+            {
+                PagedResult.Results = Alquileres;
+                PagedResult.RowCount = Alquileres.Count;
+                PagedResult.TotalPages = response.TotalPages;
+            }
+        }
+        catch (Exception ex)
+        {
+            Toaster.ShowError(ex.Message);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private void OnLimpiar()
+    {
+        BusquedaRequest = new() { Pagina = 1, Filas = 5 };
+    }
+
+    private async Task PaginaCambiada()
+    {
+        IsLoading = true;
+        BusquedaRequest.Pagina = PagedResult.CurrentPage;
+        BusquedaRequest.Filas = PagedResult.RowPerPage;
+        await OnSearch();
+    }
+
+    private async Task FilasPorPagina()
+    {
+        BusquedaRequest.Pagina = PagedResult.CurrentPage;
+        BusquedaRequest.Filas = PagedResult.RowPerPage;
+        await OnSearch();
+    }
+
+
+
+    private async Task OnDescargarPDFAlquiler(int id)
+    {
+        var response = await AlquilerProxy.GetDocumentAlquilerByIdAsync(id);
+
+        if (!response.Success)
+        {
+            Toaster.ShowError("error al mostrar el PDF - " + response.ErrorMessage);
+            return;
+        }
+
+        pdfUrl = $"data:application/pdf;base64,{response.ErrorMessage}";
+
+        await JS.InvokeVoidAsync("eval", "new bootstrap.Modal(document.getElementById('pdfModal')).show()");
+
+    }
+
+
+
+
+
+    private async Task OnEliminar(int id)
+    {
+        try
+        {
+            var result = await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Text = "Desea eliminar el alquiler?",
+                    Title = "Eliminar",
+                    Icon = SweetAlertIcon.Question,
+                    ShowCancelButton = true
+                });
+
+            if (result.IsConfirmed)
+            {
+                await AlquilerProxy.DeleteAsync(id);
+
+                Toaster.ShowInfo("Se anulo correctamente el alquiler");
+
+                await OnSearch();
+            }
+        }
+        catch (Exception ex)
+        {
+            Toaster.ShowError(ex.Message);
+        }
+    }
+
+
+}

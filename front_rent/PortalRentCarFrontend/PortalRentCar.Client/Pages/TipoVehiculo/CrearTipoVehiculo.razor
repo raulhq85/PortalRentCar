@@ -1,0 +1,34 @@
+﻿@page "/tipovehiculo/nuevo"
+@inject ITipoVehiculoProxy Proxy
+@inject IToastService ToastService
+@inject NavigationManager NavigationManager
+@attribute [Authorize(Roles = Constantes.RolAdministrador)]
+
+<EditTipoVehiculoComponent Request="RequestNuevo" Titulo="Crear Tipo Vehiculo" OnGrabar="OnGrabar" />
+
+<LoadingComponent IsLoading="IsLoading" />
+
+@code {
+
+    private TipoVehiculoDtoRequest RequestNuevo { get; set; } = new();
+    public bool IsLoading { get; set; }
+
+    private async Task OnGrabar()
+    {
+        try
+        {
+            IsLoading = true;
+            await Proxy.CreateAsync(RequestNuevo);
+            ToastService.ShowInfo("Se creó el tipo Vehiculo correctamente");
+            NavigationManager.NavigateTo("/tipovehiculo/list");
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+}

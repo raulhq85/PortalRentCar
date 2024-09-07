@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj",
+      "projectUniqueName": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj",
       "projectName": "PortalRentCar.Shared",
-      "projectPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj",
+      "projectPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Shared\\PortalRentCar.Shared.csproj",
       "packagesPath": "C:\\Users\\RAUL-HQ\\.nuget\\packages\\",
-      "outputPath": "E:\\RENTCAR_DEV\\front_rent_car\\PortalRentCar\\PortalRentCar.Shared\\obj\\",
+      "outputPath": "E:\\RENTCAR_DEV\\back_rent_car\\PortalRentCar\\PortalRentCar.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

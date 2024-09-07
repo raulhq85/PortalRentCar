@@ -11,10 +11,12 @@ namespace PortalRentCar.Server.Controllers
     public class VehiculoController : Controller
     {
         private readonly IVehiculoService _vehiculoService;
+        private readonly IUbicacionService _IUbicacionService;
 
-        public VehiculoController(IVehiculoService vehiculoService)
+        public VehiculoController(IVehiculoService vehiculoService, IUbicacionService iUbicacionService)
         {
             _vehiculoService = vehiculoService;
+            _IUbicacionService = iUbicacionService;
         }
 
         [HttpGet]
@@ -26,7 +28,7 @@ namespace PortalRentCar.Server.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = Constantes.RolAdministrador)]
+        [Authorize(Roles = Constantes.RolAdministrador)]
         public async Task<IActionResult> Post(VehiculoDtoRequest request)
         {
             var response = await _vehiculoService.AddAsync(request);
@@ -35,7 +37,7 @@ namespace PortalRentCar.Server.Controllers
         }
 
         [HttpPut("{id:int}")]
-        //[Authorize(Roles = Constantes.RolAdministrador)]
+        [Authorize(Roles = Constantes.RolAdministrador)]
         public async Task<IActionResult> Put(int id, VehiculoDtoRequest request)
         {
             var response = await _vehiculoService.UpdateAsync(id, request);
@@ -44,7 +46,7 @@ namespace PortalRentCar.Server.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        //[Authorize(Roles = Constantes.RolAdministrador)]
+        [Authorize(Roles = Constantes.RolAdministrador)]
         public async Task<IActionResult> Delete(int id)
         {
             var response = await _vehiculoService.DeleteAsync(id);
@@ -77,5 +79,14 @@ namespace PortalRentCar.Server.Controllers
             var response = await _vehiculoService.GetVehiculoHomeAsyncById(id);
             return Ok(response);
         }
+
+        [HttpGet("GetListVehiculoUbicacion")]
+        public async Task<IActionResult> GetListVehiculoUbicacion()
+        {
+            var response = await _IUbicacionService.GetListUbicacionVehiculo();
+
+            return response.Success ? Ok(response) : BadRequest(response);
+        }
+
     }
 }

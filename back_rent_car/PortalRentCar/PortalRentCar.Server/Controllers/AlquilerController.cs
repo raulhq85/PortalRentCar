@@ -23,16 +23,30 @@ namespace PortalRentCar.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] AlquilerSearchRequest request)
         {
-            var cliente = User.Claims.First(p => p.Type == ClaimTypes.Email).Value;
 
-            var response = await _alquilerService.ListAsync(request, cliente);
+                if (!User.Identity.IsAuthenticated)
+                {
+                    return Unauthorized("Usuario no autorizado.");
+                }
 
-            return response.Success ? Ok(response) : BadRequest(response);
+                var emailClaim = User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Email)?.Value;
+
+                if (string.IsNullOrEmpty(emailClaim))
+                {
+                    return Unauthorized("User session has expired or the email claim is missing.");
+                }
+
+                var cliente = emailClaim;
+
+                var response = await _alquilerService.ListAsync(request, cliente);
+
+                return response.Success ? Ok(response) : BadRequest(response);
+
         }
 
-        [HttpPost]
-        //[Authorize(Roles = Constantes.RolCliente)]
-        public async Task<IActionResult> Post([FromBody] AlquilerDtoRequest request)
+        [HttpPost("GenerateAlquilerAsync")]
+        [Authorize(Roles = Constantes.RolCliente)]
+        public async Task<IActionResult> GenerateAlquilerAsync([FromBody] AlquilerDtoRequest request)
         {
 
             var usuario = User.Claims.First(p => p.Type == ClaimTypes.Email).Value;
@@ -45,13 +59,26 @@ namespace PortalRentCar.Server.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        //[Authorize(Roles = Constantes.RolAdministrador)]
+        [Authorize(Roles = Constantes.RolAdministrador)]
         public async Task<IActionResult> Delete(int id)
         {
             var response = await _alquilerService.DeleteAsync(id);
 
             return response.Success ? Ok(response) : BadRequest(response);
         }
+
+
+        [HttpGet("GetDocumentAlquilerByIdAsync")]
+        public async Task<IActionResult> GetDocumentAlquilerByIdAsync(int id)
+        {
+            var response = await _alquilerService.GetDocumentAlquilerByIdAsync(id);
+
+            return response.Success ? Ok(response) : BadRequest(response);
+        }
+
+        
+
+
 
     }
 }

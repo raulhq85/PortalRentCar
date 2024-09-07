@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "PortalRentCar.Client",
   "resources": {
-    "hash": "sha256-yKCOoCSsCOd8ymwk8YZsCPX5MyPwLA56mLG9uXhzSlM=",
+    "hash": "sha256-b/DhF7IuewCM1EeWjXdiG1FhhSLl968JkQoQhH8i9GI=",
     "jsModuleNative": {
       "dotnet.native.8.0.7.8eda15j40g.js": "sha256-tFsxPBbhkdn6GKNBKvCRLzrfAHdyM86odYTe0MtrwMk="
     },
@@ -21,6 +21,7 @@
       "Blazored.SessionStorage.wasm": "sha256-nQXuCGHos7iwp2WxRUgarKmWgJYChaVQp2NajgNU3V8=",
       "Blazored.Toast.wasm": "sha256-tCNYnYuB69ZO7+n7obUv//+KkNP809fARvATEkvPug4=",
       "CurrieTechnologies.Razor.SweetAlert2.wasm": "sha256-n6ubE26hJennNg6Gc9pr3BUMAuIS7CU4C94k2cw++m8=",
+      "LeafletForBlazor.wasm": "sha256-kasAGlU/mjO8xZ0qZoloWHvfzkuBsqjpqug4F6reI00=",
       "Microsoft.AspNetCore.Authorization.wasm": "sha256-tZ3Z0q6xQTgUxlWgiWvzS4SBQeBqETtRGtUWvVaU31w=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-O1efzZ+VlmJ3lOWndJZV5tR5TGF3PS5viT8tqgf8wRU=",
       "Microsoft.AspNetCore.Components.Authorization.wasm": "sha256-BCPKMbkDKppx2pgC6nZbJaAlm3G8ykAYqS28aHPVIy0=",
@@ -52,6 +53,19 @@
       "Microsoft.JSInterop.WebAssembly.wasm": "sha256-gxsImbLQUP0+xBtL1HjJHY4TK2kv0b55tv61C2OHsUU=",
       "Microsoft.Net.Http.Headers.wasm": "sha256-E/OBg0STRKh0hZ+S27S9GXgOVLhnxsZg8rc51rwCtTw=",
       "Scrutor.wasm": "sha256-q41aJqr21e33bLaUuCTWpx23pPiSLLUBZ8tLtoSItaY=",
+      "Syncfusion.Blazor.Buttons.wasm": "sha256-bTq4qeJ5ZQgKYofeVz6Wy4joRScs52XhKaBb6qtAaKA=",
+      "Syncfusion.Blazor.Core.wasm": "sha256-dP/YVBR6ai31k7jsmfwqIlRmk5QGWgTibw1+NnLTdAw=",
+      "Syncfusion.Blazor.Data.wasm": "sha256-GKweiv74RHw07cXW44LdwgkAFRy2/m418oWC5Cv681I=",
+      "Syncfusion.Blazor.DropDowns.wasm": "sha256-+vTEJmT8yuB5UZx5BUeXGhzEMv/4Bpr9OTB7vEjUl1o=",
+      "Syncfusion.Blazor.Inputs.wasm": "sha256-tSL07ZQynn7kj1EDFkPI7PAZT9fEsLchg/eYJLtK4Sk=",
+      "Syncfusion.Blazor.Lists.wasm": "sha256-EpKlLqY8/1pUqAiVlORaO+istR5UCUag1+MIpD+mxIY=",
+      "Syncfusion.Blazor.Navigations.wasm": "sha256-ciSIBpv3nvUC51JCefGZS/WAtwh4skOn4JX01cfhwfY=",
+      "Syncfusion.Blazor.Notifications.wasm": "sha256-juWWjcl8GSmQ1ljpcLELnsJi6PPSNmBI/qfWD+GtrGc=",
+      "Syncfusion.Blazor.Popups.wasm": "sha256-eYeBeMHVO85mXjy1/f4QR4sjg7TkIXpT7C5WVCPSiH4=",
+      "Syncfusion.Blazor.Spinner.wasm": "sha256-ZlO9P35efu4ah4+rjDJVMFZKGtoqnHALCzZOAOJ+trE=",
+      "Syncfusion.Blazor.SplitButtons.wasm": "sha256-JyzEAu8SLq55z+MmoYPZTzNw0g8K0YsH/8agdom5E5M=",
+      "Syncfusion.Blazor.Themes.wasm": "sha256-ZbNxL3Pyw02Q8MqYrjBbNs7ErEmon4zZpVju1z3Okt0=",
+      "Syncfusion.Licensing.wasm": "sha256-SaMsMLtEOw5y50pjcEpQFm1A1AgXYZkNVma8ogHx19A=",
       "System.IdentityModel.Tokens.Jwt.wasm": "sha256-rY11eIqQ7HXRnPmxqWRVA6U/q662zsmeHdCOJ1aKXOg=",
       "System.IO.Pipelines.wasm": "sha256-JqVBy6SV+3qk+IK3VJiyIDt9CsVk6b1/ytTXmrI4mTM=",
       "Microsoft.CSharp.wasm": "sha256-vCw0CqN4rcydAU24ZGZXUBVaczRh4WYncFAUMHp2p5E=",
@@ -222,16 +236,19 @@
       "mscorlib.wasm": "sha256-fLbZiSHBNdpHoh4EgRqMaNP5NQyIK5TEj6AXFLqo8m8=",
       "netstandard.wasm": "sha256-d4xbAE8qrKq5euUoZHPO+jkYPjlCYBzUew45MKsYKic=",
       "System.Private.CoreLib.wasm": "sha256-8yi6NcX1lkNQgV4WKjnMBYIZyKh4P+OXnXVQmgxGZD4=",
-      "PortalRentCar.Shared.wasm": "sha256-XeVek4JcFfecwW4yjoviSqZL4cp/nQIgG2tUQTNc4BI=",
-      "PortalRentCar.Client.wasm": "sha256-JCFadOle3AkC7s39vzEzm9IlLzXEscnn7tzO8laZrWc="
+      "PortalRentCar.Shared.wasm": "sha256-sBA7z9+3Fjmmk336lI35GChpb8Z1uao+BHgSERrJe6o=",
+      "PortalRentCar.Client.wasm": "sha256-3u12fgejOM4dyK/1UNc3hTe8tYtgTMRHqonuTphKK7c="
     },
     "pdb": {
-      "PortalRentCar.Shared.pdb": "sha256-4cEPhoJksSGeDcsjV0jVGwGc7b2MkG/n4NOE4cdPt3A=",
-      "PortalRentCar.Client.pdb": "sha256-A7A/TI29AskF3X0DHA6kjJJyVV54JdlKztCFIyEzyAE="
+      "PortalRentCar.Shared.pdb": "sha256-Gx73nDrnux05Bkim0mX2o4nI98i+VqotuXR8NeybCWI=",
+      "PortalRentCar.Client.pdb": "sha256-+gJWPN4NoIehsiMrxXhg1SH7a/8PY0Po6MtbBoBFJpk="
     }
   },
   "cacheBootResources": true,
   "debugLevel": -1,
+  "appsettings": [
+    "../appsettings.json"
+  ],
   "globalizationMode": "sharded",
   "extensions": {
     "blazor": {}

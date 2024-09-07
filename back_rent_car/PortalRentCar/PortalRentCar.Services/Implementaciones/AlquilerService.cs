@@ -1,7 +1,7 @@
-﻿using AutoMapper;
+﻿using System.Globalization;
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using Microsoft.Win32;
 using PortalRentCar.DataAcces;
 using PortalRentCar.Entities;
 using PortalRentCar.Repositories.Inplementaciones;
@@ -10,13 +10,7 @@ using PortalRentCar.Services.Interfaces;
 using PortalRentCar.Services.Utils;
 using PortalRentCar.Shared.Request;
 using PortalRentCar.Shared.Response;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using Spire.Doc;
 
 namespace PortalRentCar.Services.Implementaciones
 {
@@ -26,6 +20,7 @@ namespace PortalRentCar.Services.Implementaciones
         private readonly IAlquilerRepository _alquilerRepository;
         private readonly IVehiculoService _vehiculoService;
         private readonly IClienteRepository _clienteRepository;
+        private readonly IVehiculoRepository _vehiculoRepository;
         private readonly IUbicacionVehiculoRepository _ubicacionVehiculoRepository;
         private readonly ILogger<AlquilerService> _logger;
         private readonly IMapper _mapper;
@@ -36,11 +31,13 @@ namespace PortalRentCar.Services.Implementaciones
                                IVehiculoService vehiculoService, 
                                IClienteRepository clienteRepository, 
                                IUbicacionVehiculoRepository ubicacionVehiculoRepository,
+                               IVehiculoRepository vehiculoRepository,
                                ILogger<AlquilerService> logger, IMapper mapper)
         {
             _alquilerRepository = alquilerRepository;
             _clienteRepository = clienteRepository;
             _vehiculoService = vehiculoService;
+            _vehiculoRepository = vehiculoRepository;
             _ubicacionVehiculoRepository = ubicacionVehiculoRepository;
             _logger = logger;
             _mapper = mapper;
@@ -58,7 +55,7 @@ namespace PortalRentCar.Services.Implementaciones
 
                 var lstVentadetalle = new List<Alquiler>();
 
-                var cliente = await _clienteRepository.GetClienteByEmailAsync( (usuarioMail == null? "GRAULEX@GMAIL.COM":usuarioMail));
+                var cliente = await _clienteRepository.GetClienteByEmailAsync( usuarioMail);
                 if (cliente is null)
                 {
                     response.ErrorMessage = "El cliente no existe";
@@ -106,7 +103,7 @@ namespace PortalRentCar.Services.Implementaciones
 
                 await _ubicacionVehiculoRepository.AddAsync(ubicacion);
 
-                response.ErrorMessage = "Su alquiler se arealizado con exito con el Nro: " + nroAlquiler;
+                response.ErrorMessage = "Grabado correctamente, Alquiler Nro: " + nroAlquiler;
                 response.Success = true;
             }
             catch (Exception ex)
@@ -121,45 +118,53 @@ namespace PortalRentCar.Services.Implementaciones
         public async Task<BaseResponse> DeleteAsync(int id)
         {
             var response = new BaseResponse();
-            //try
-            //{
+            try
+            {
 
-            //    var entityDet = await _repository.FindByIdAsync(id);
+                var alguiler = await _alquilerRepository.FindByIdAsync(id);
 
-            //    if (entityDet == null)
-            //    {
-            //        response.ErrorMessage = "No se encontró el detalle de la venta";
-            //        return response;
-            //    }
+                if (alguiler == null)
+                {
+                    response.ErrorMessage = "No se encontró el detalle del alquiler";
+                    return response;
+                }
 
-            //    var registro = await _repositoryProducto.FindByIdAsync(entityDet.ProductoId);
+                var respVehiculo = await _vehiculoRepository.FindByIdAsync(alguiler.VehiculoId);
 
-            //    ProductoDtoRequest prod = new ProductoDtoRequest();
+                VehiculoDtoRequest vehiculo = new VehiculoDtoRequest();
 
-            //    prod.Cantidad = registro.Cantidad + entityDet.Cantidad;
-            //    prod.Nombre = registro.Nombre;
-            //    prod.Descripcion = registro.Descripcion;
-            //    prod.Id = registro.Id;
-            //    prod.PrecioCompra = registro.PrecioCompra;
-            //    prod.PrecioVenta = registro.PrecioVenta;
-            //    prod.CategoriaId = registro.CategoriaId;
-            //    prod.Url = registro.Url;
+                    vehiculo.SituacionVehiculo = 0; // 0 disponible
+                    vehiculo.Id = respVehiculo.Id;
+                    vehiculo.TipoVehiculoId = respVehiculo.TipoVehiculoId;
+                    vehiculo.MarcaId = respVehiculo.MarcaId;
+                    vehiculo.Nombre = respVehiculo.Nombre;
+                    vehiculo.Color = respVehiculo.Color;
+                    vehiculo.Anio = respVehiculo.Anio;
+                    vehiculo.Placa = respVehiculo.Placa;
+                    vehiculo.Kilometraje = respVehiculo.Kilometraje;
+                    vehiculo.Precio = respVehiculo.Precio;
+                    vehiculo.ImagenUrL = respVehiculo.ImagenUrL;
 
-            //    //producto
-            //    await _productoService.UpdateAsync(registro.Id, prod);
-            //    //detalle venta
-            //    await _repository.DeleteAsync(entityDet.Id);
-            //    //venta
-            //    await _repositoryVenta.DeleteAsync(entityDet.VentaId);
+                //vehiculo actualizamos el estado para su alquiler
 
-            //    response.Success = true;
+                await _vehiculoService.UpdateAsync(respVehiculo.Id, vehiculo);
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    response.ErrorMessage = "Error al eliminar la venta";
-            //    _logger.LogError(ex, "{ErrorMessage} {Message}", response.ErrorMessage, ex.Message);
-            //}
+                //anulamos el alquiler
+
+                await _alquilerRepository.DeleteAsync(alguiler.Id);
+
+                // quitamos de la ubicacion
+                //var ubicacion = await _ubicacionVehiculoRepository.GetAsyncUbicacionByIdVehicleAsync(alguiler.VehiculoId);
+                //await _ubicacionVehiculoRepository.DeleteAsync(ubicacion.Id);
+
+                response.Success = true;
+
+            }
+            catch (Exception ex)
+            {
+                response.ErrorMessage = "Error al eliminar el alquiler";
+                _logger.LogError(ex, "{ErrorMessage} {Message}", response.ErrorMessage, ex.Message);
+            }
             return response;
         }
 
@@ -170,26 +175,28 @@ namespace PortalRentCar.Services.Implementaciones
             {
 
                 RentCarIdentityUser? usuario = null;
-                usuario = await _userManager.FindByEmailAsync((usuarioMail == null ? "GRAULEX@GMAIL.COM" : usuarioMail));
+                usuario = await _userManager.FindByEmailAsync(usuarioMail);
                 var roles = await _userManager.GetRolesAsync(usuario);
                 var isAdmin = roles.Contains("Administrador");
+                int? idUsuario = null;
 
                 if (!isAdmin)
                 {
-                    var clienteUser = await _clienteRepository.GetClienteByEmailAsync((usuarioMail == null ? "GRAULEX@GMAIL.COM" : usuarioMail));
+                    var clienteUser = await _clienteRepository.GetClienteByEmailAsync(usuarioMail);
                     if (clienteUser is null)
                     {
                         response.ErrorMessage = "El cliente no existe";
                         return response;
                     }
 
-                    request.ClienteId = clienteUser.Id;
+                    idUsuario = clienteUser.Id;
                 }
                 else
                 {
-                    request.ClienteId = null;
+                    idUsuario = null;
                 }
-                var tupla = await _alquilerRepository.ListarAlquileresAsync(request.ClienteId, request.Placa, request.TipoVehiculoId, request.MarcaId,request.PrecioMinimo, request.PrecioMaximo, request.Pagina, request.Filas);
+
+                var tupla = await _alquilerRepository.ListarAlquileresAsync(request.NroAlquiler, request.Vehiculo, idUsuario, request.Placa, request.TipoVehiculoId, request.MarcaId,request.PrecioMinimo, request.PrecioMaximo, request.Pagina, request.Filas);
                 response.Data = _mapper.Map<ICollection<AlquilerDtoResponse>>(tupla.Collection);
                 response.TotalPages = Helper.GetTotalPages(tupla.Total, request.Filas);
                 response.Success = true;
@@ -201,6 +208,7 @@ namespace PortalRentCar.Services.Implementaciones
             }
             return response;
         }
+
         private string GenerateNroAlquiler(string? ultimoNroAlquiler)
         {
             if (string.IsNullOrEmpty(ultimoNroAlquiler))
@@ -222,8 +230,9 @@ namespace PortalRentCar.Services.Implementaciones
 
         public static (double Latitude, double Longitude) GetRandomGeorecorrido()
         {
-            double centerLat = -12.172202;
-            double centerLon = -76.959292;
+            // geolocalizacion aleatoria para lima
+            double centerLat = -12.061059;
+            double centerLon = -77.005312;
             double radius = 5000;
 
             const double EarthRadius = 6378137; // Radio
@@ -242,5 +251,81 @@ namespace PortalRentCar.Services.Implementaciones
             return (newLat, newLon);
         }
 
+        public async Task<BaseResponse> GetDocumentAlquilerByIdAsync(int id)
+        {
+
+            BaseResponse result = new BaseResponse();
+            string templatePath = "Templates\\plantilla_alquiler.docx";
+
+            var alquilerResponse = await _alquilerRepository.GetDocumentAlquilerById(id);
+
+            if (!File.Exists(templatePath))
+            {
+                result.Success = false;
+                result.ErrorMessage = "No se tiene plantilla";
+                return result;
+            }
+
+            try
+            {
+                Document doc = new Document();
+                doc.LoadFromFile(templatePath, FileFormat.Auto);
+                CultureInfo culture = new CultureInfo("en-US");
+
+                doc.Replace("[CLIENTE]", alquilerResponse.Cliente,true, true);
+                doc.Replace("[NRO_ALQUILER]", alquilerResponse.NroAlquiler, true, true);
+                doc.Replace("[FECHA_ALQUILER]", alquilerResponse.Fecha.ToString("dd") + " de " + alquilerResponse.Fecha.ToString("MMMM") + " del " + alquilerResponse.Fecha.ToString("yyyy"), true, true);
+                doc.Replace("[NRO_ITEM]", "1", true, true);
+                doc.Replace("[VEHICULO]", alquilerResponse.Nombre + " " + alquilerResponse.Placa + " " + alquilerResponse.TipoVehiculo + " " + alquilerResponse.Marca , true, true);
+                doc.Replace("[PRECIO_DIA]", alquilerResponse.PrecioDia.ToString("N2", culture), true, true);
+                doc.Replace("[FECHA_INI]", alquilerResponse.FechaInicio.ToString("dd/MM/yyyy"), true, true);
+                doc.Replace("[EFCHA_FIN]", alquilerResponse.FechaFin.ToString("dd/MM/yyyy"), true, true);
+                doc.Replace("[CANT_DIA]", alquilerResponse.CantidadDias.ToString(), true, true);
+                doc.Replace("[TOTAL]", alquilerResponse.PrecioTotal.ToString("N2", culture), true, true);
+
+                MemoryStream archivoMemoria = new MemoryStream();
+                doc.SaveToStream(archivoMemoria, FileFormat.PDF);
+                Byte[] ByteFile = archivoMemoria.ToArray();
+                doc.Close();
+
+                result.Success = true;
+                result.ErrorMessage = Convert.ToBase64String(ByteFile);
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.ErrorMessage = "No se tiene plantilla" + ex;
+                return result;
+            }
+
+            return result;
+
+        }
+
+
+
+        public async Task<BaseResponseGeneric<AlquilerDtoResponse>> FindByIdAsync(int id)
+        {
+            var response = new BaseResponseGeneric<AlquilerDtoResponse>();
+            try
+            {
+                var entity = await _alquilerRepository.FindByIdAsync(id);
+                if (entity == null)
+                {
+                    response.ErrorMessage = "Alquiler no encontrado";
+                    return response;
+                }
+
+                response.Data = _mapper.Map<AlquilerDtoResponse>(entity);
+                response.Success = true;
+
+            }
+            catch (Exception ex)
+            {
+                response.ErrorMessage = "Error al buscar el Alquiler por ID";
+                _logger.LogCritical(ex, "{ErrorMessage} {Message}", response.ErrorMessage, ex.Message);
+            }
+            return response;
+        }
     }
 }

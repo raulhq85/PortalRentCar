@@ -1,4 +1,5 @@
-﻿using LinqKit;
+﻿using Dapper;
+using LinqKit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using PortalRentCar.DataAcces;
@@ -7,15 +8,36 @@ using PortalRentCar.Entities.Infos;
 using PortalRentCar.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace PortalRentCar.Repositories.Inplementaciones
 {
     public class VehiculoRepository(PortalRentCarDbContext context) : RepositoryBase<Vehiculo>(context), IVehiculoRepository
     {
+        //public async Task<UbicacionVehiculoInfo> GetAsyncUbicacionByIdVehicleAsync(int id)
+        //{
+        //    try
+        //    {
+        //        await using var connection = Context.Database.GetDbConnection();
+
+        //        var entity = await connection.QueryFirstOrDefaultAsync<UbicacionVehiculoInfo>(
+        //            sql: "usp_ubicacion_x_id_vehiculo",
+        //            commandType: CommandType.StoredProcedure);
+
+        //        return entity;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return new UbicacionVehiculoInfo(); 
+        //    }
+        //}
+
         public async Task<VehiculoHomeInfo?> GetVehiculoHomeByIdAsync(int id)
         {
             try
@@ -177,5 +199,27 @@ namespace PortalRentCar.Repositories.Inplementaciones
             }
                
         }
+
+        //public async Task<ICollection<UbicacionVehiculoInfo>> ListAsyncUbicacionVehiculo()
+        //{
+           
+        //    try
+        //    {
+        //        await using var connection = Context.Database.GetDbConnection();
+
+        //        var collection = await connection.QueryAsync<UbicacionVehiculoInfo>(
+        //            sql: "usp_ubicacion_vehiculo",
+        //            commandType: CommandType.StoredProcedure);
+
+        //        return collection.ToList();
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return new List<UbicacionVehiculoInfo>();
+        //    }
+
+        //}
+
     }
 }

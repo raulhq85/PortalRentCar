@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Dapper.SqlMapper;
 
 namespace PortalRentCar.Repositories.Interfaces
 {
@@ -18,6 +19,10 @@ namespace PortalRentCar.Repositories.Interfaces
         Task<VehiculoHomeInfo?> GetVehiculoHomeByIdAsync(int id);
 
         Task<(ICollection<VehiculoHomeInfo> Collection, int Total)> ListarVehiculoHomeAsync(string? Nombre, int? TipoVehiculoId, int? MarcaId, int? Anio, decimal? PrecioMinimo, decimal? PrecioMaximo, int pagina, int filas);
+
+        //Task<ICollection<UbicacionVehiculoInfo>> ListAsyncUbicacionVehiculo();
+
+        //Task<UbicacionVehiculoInfo> GetAsyncUbicacionByIdVehicleAsync(int id);
 
     }
 }

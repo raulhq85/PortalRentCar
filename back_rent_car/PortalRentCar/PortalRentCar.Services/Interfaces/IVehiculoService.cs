@@ -17,5 +17,6 @@ namespace PortalRentCar.Services.Interfaces
         Task<BaseResponseGeneric<VehiculoDtoRequest>> FindByIdAsync(int id);
         Task<PaginationResponse<VehiculoHomeDtoResponse>> ListarVehiculosHomeAsync(VehiculoSearchHomeRequest request);
         Task<BaseResponseGeneric<VehiculoHomeDtoResponse>> GetVehiculoHomeAsyncById(int id);
+        //Task<BaseResponseGeneric<ICollection<UbicacionVehiculoDtoResponse>>> GetListUbicacionVehiculo();
     }
 }

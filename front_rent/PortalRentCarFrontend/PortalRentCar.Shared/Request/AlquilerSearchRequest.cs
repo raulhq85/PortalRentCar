@@ -8,7 +8,9 @@ namespace PortalRentCar.Shared.Request
 {
     public class AlquilerSearchRequest : RequestBase
     {
-        public int? ClienteId { get; set; }
+        public string? NroAlquiler { get; set; }
+        public string? Vehiculo { get; set; }
+        public string? Cliente { get; set; }
         public string? Placa { get; set; }
         public int? TipoVehiculoId { get; set; }
         public int? MarcaId { get; set; }
